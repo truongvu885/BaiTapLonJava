@@ -11,7 +11,6 @@ public class NhanVien extends Nguoi{
     private int maPB;
 
     public NhanVien() {
-
     }
 
     public NhanVien(long ma, String ten, String diaChi, String ngaySinh, long SDT, String gioiTinh, String ngayVaoLam, float phuCap, float hsl, String chucVu, int maPB) {
@@ -67,27 +66,27 @@ public class NhanVien extends Nguoi{
         this.maPB = maPB;
     }
 
-    public boolean isFloat(String s){
-        try {
-            Float.parseFloat(s);
-            return true;
-        } catch(NumberFormatException e){
-            return false;
-        }
-    }
     public void nhap(){
+
         super.nhap();
         Scanner input = new Scanner(System.in);
+        KiemTraType kt = new KiemTraType();
         System.out.print("Ngày vào làm: ");
         this.ngayVaoLam = input.nextLine();
         System.out.print("Chức vụ: ");
         this.chucVu = input.nextLine();
-        System.out.print("Phòng ban: ");
-        this.maPB = Integer.parseInt(input.nextLine());
+        while(true){
+            System.out.print("Phòng ban: ");
+            String maPBS = input.nextLine();
+            if(kt.isLong(maPBS)){
+                this.hsl = Float.parseFloat(maPBS);
+                break;
+            }
+        }
         while (true){
             System.out.print("Hệ số lương: ");
             String hslS = input.nextLine();
-            if(isLong(hslS)){
+            if(kt.isLong(hslS)){
                 this.hsl = Float.parseFloat(hslS);
                 break;
             }
@@ -95,15 +94,16 @@ public class NhanVien extends Nguoi{
         while (true){
             System.out.print("Phụ cấp: ");
             String pcS = input.nextLine();
-            if(isLong(pcS)){
+            if(kt.isLong(pcS)){
                 this.hsl = Float.parseFloat(pcS);
                 break;
             }
         }
+        super.setType("NhanVien");
     }
     @Override
     public void hienLb(){
-        System.out.printf("%5s|%30s|%15s|%10s|%50s|%12s|%15s|%8s|%10s|%8s|%8s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT",
+        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT",
                 "Ngày vào làm","Hệ số lương","Chức vụ","Phòng ban","Phụ cấp");
         System.out.print("\n");
     }
@@ -111,9 +111,9 @@ public class NhanVien extends Nguoi{
     public void hienDt(){
         super.hienDt();
         System.out.printf("%15s|",this.ngayVaoLam);
-        System.out.printf("%8f|",this.hsl);
+        System.out.printf("%12f|",this.hsl);
         System.out.printf("%10s|",this.chucVu);
-        System.out.printf("%8d|",this.maPB);
+        System.out.printf("%10d|",this.maPB);
         System.out.printf("%8f|",this.phuCap);
     }
     @Override

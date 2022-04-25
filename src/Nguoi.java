@@ -1,6 +1,6 @@
 package src;
 
-import java.util.Date;
+
 import java.util.Scanner;
 
 public class Nguoi {
@@ -10,6 +10,7 @@ public class Nguoi {
     private String ngaySinh;
     private long sdt;
     private String gioiTinh;
+    private String type;
 
     public Nguoi() {
     }
@@ -21,6 +22,22 @@ public class Nguoi {
         this.ngaySinh = ngaySinh;
         this.sdt = SDT;
         this.gioiTinh = gioiTinh;
+    }
+
+    public long getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(long sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public long getMa() {
@@ -70,21 +87,14 @@ public class Nguoi {
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-    public  boolean isLong(String str) {
-        try {
-            Long.parseLong(str);
-            return true;
-        } catch(NumberFormatException e){
-            return false;
-        }
-    }
     public void nhap(){
         Scanner input = new Scanner(System.in);
+        KiemTraType kt = new KiemTraType();
         while (true)
         {
             System.out.print("Mã: ");
             String maS = input.nextLine();
-            if(isLong(maS)){
+            if(kt.isLong(maS)){
                 this.ma = Long.parseLong(maS);
                 break;
             }
@@ -107,22 +117,22 @@ public class Nguoi {
         {
             System.out.print("Số điện thoại: ");
             String sdtS = input.nextLine();
-            if(isLong(sdtS)){
+            if(kt.isLong(sdtS)){
                 this.sdt = Long.parseLong(sdtS);
                 break;
             }
         }
     }
     protected void hienLb(){
-        System.out.printf("%5s|%30s|%15s|%10s|%50s|%12s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT");
+        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT");
         System.out.print("\n");
     }
     protected void hienDt(){
         System.out.printf("%5d|",this.ma);
-        System.out.printf("%30s|",this.ten);
+        System.out.printf("%20s|",this.ten);
         System.out.printf("%15s|",this.ngaySinh);
         System.out.printf("%10s|",this.gioiTinh);
-        System.out.printf("%50s|",this.diaChi);
+        System.out.printf("%20s|",this.diaChi);
         System.out.printf("%12s|",this.sdt);
     }
     public void hien(){
