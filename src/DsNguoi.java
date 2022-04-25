@@ -190,7 +190,7 @@ public class DsNguoi {
                 int chon;
                 while(true)
                 {
-                    System.out.print("Nhập mã nhân viên cần sửa");
+                    System.out.print("Nhập địa chỉ của nhân viên cần sửa");
                     String maSuaS = new Scanner(System.in).nextLine();
                     if(kt.isLong(maSuaS)){
                         maSua = Long.parseLong(maSuaS);
