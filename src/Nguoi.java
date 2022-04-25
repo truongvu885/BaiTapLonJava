@@ -1,9 +1,10 @@
 package src;
 
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Nguoi {
+public class Nguoi implements Serializable {
     private long ma;
     private String ten;
     private String diaChi;

@@ -1,5 +1,6 @@
 package src;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -187,7 +188,7 @@ public class DsNguoi {
         switch (type){
             case "NhanVien":
                 long maSua;
-                int chon;
+                int chon ;
                 while(true)
                 {
                     System.out.print("Nhập địa chỉ của nhân viên cần sửa");
@@ -291,6 +292,10 @@ public class DsNguoi {
             }
         });
         hien("NhanVien");
+    }
+
+    public void ghiFile(){
+        //FileInputStream f = new FileInputStream("D:\dsNguoi.bin");
     }
 }
 class NguoiSort{
