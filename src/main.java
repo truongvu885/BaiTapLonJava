@@ -63,6 +63,9 @@ public class main {
                              }while (chonTim!=0);
                              timNhanVien();
                              break;
+                         case 6:
+                             ds.sapXepLuong();
+                             break;
                      }
                  }while (chonnv!=0);
                  break;
@@ -111,6 +114,9 @@ public class main {
                              }while (chonTim!=0);
                              timNhanVien();
                              break;
+                         case 6:
+                             ds.sapXepTen();
+                             break;
                      }
                  }while (chonnv!=0);
                  break;
@@ -136,6 +142,7 @@ public class main {
         System.out.println("3. Xóa khách hàng");
         System.out.println("4. Xem thông tin khách hàng");
         System.out.println("5. Tìm kiếm thông tin khách hàng");
+        System.out.println("6. Sắp xếp theo lương");
     }
 
     public static void menuNhanvien()  {
@@ -145,6 +152,7 @@ public class main {
         System.out.println("3. Xóa nhân viên");
         System.out.println("4. Xem thông tin nhân viên");
         System.out.println("5. Tìm kiếm thông tin nhân viên");
+        System.out.println("6. Sắp xếp theo tên");
     }
     public static void timNhanVien(){
         System.out.println("\n\t---Tìm kiếm---");

@@ -11,6 +11,7 @@ public class NhanVien extends Nguoi{
     private int maPB;
 
     public NhanVien() {
+
     }
 
     public NhanVien(long ma, String ten, String diaChi, String ngaySinh, long SDT, String gioiTinh, String ngayVaoLam, float phuCap, float hsl, String chucVu, int maPB) {
@@ -66,6 +67,9 @@ public class NhanVien extends Nguoi{
         this.maPB = maPB;
     }
 
+    public double tinhLuong(){
+        return this.luongCB*this.hsl + phuCap;
+    }
     public void nhap(){
         super.nhap();
         Scanner input = new Scanner(System.in);
@@ -102,8 +106,8 @@ public class NhanVien extends Nguoi{
     }
     @Override
     public void hienLb(){
-        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT",
-                "Ngày vào làm","Hệ số lương","Chức vụ","Phòng ban","Phụ cấp");
+        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|%10s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT",
+                "Ngày vào làm","Hệ số lương","Chức vụ","Phòng ban","Phụ cấp","Lương");
         System.out.print("\n");
     }
     @Override
@@ -114,6 +118,7 @@ public class NhanVien extends Nguoi{
         System.out.printf("%10s|",this.chucVu);
         System.out.printf("%10d|",this.maPB);
         System.out.printf("%8f|",this.phuCap);
+        System.out.printf("%10d",this.tinhLuong());
         System.out.println("\n");
     }
     @Override
