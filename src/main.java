@@ -170,8 +170,8 @@ public class main {
     }
     public static void timKhachHang(){
         System.out.println("\n\t---Tìm kiếm---");
-        System.out.println("1. Tìm theo tên");
-        System.out.println("2. Tìm theo mã");
+        System.out.println("1. Tìm theo mã");
+        System.out.println("2. Tìm theo tên");
         System.out.println("3. Tìm theo quyền thành viên");
     }
 

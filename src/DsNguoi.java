@@ -156,9 +156,16 @@ public class DsNguoi {
     }
     public void timKiemThanhVien(){
         KhachHang kh = new KhachHang();
+        int tv;
         System.out.println("Bạn muốn tìm khách hàng nào ");
         kh.KieuThanhVien();
-        int tv = new Scanner(System.in).nextInt();
+        while(true){
+            String tvS = new Scanner(System.in).nextLine();
+            if(kt.isInt(tvS)){
+                tv = Integer.parseInt(tvS);
+                break;
+            }
+        }
         for (Nguoi nguoi:dsNg) {
              kh = (KhachHang) nguoi;
              if(kh.getThanhVien()==tv){
