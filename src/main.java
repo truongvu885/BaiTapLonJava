@@ -112,10 +112,15 @@ public class main {
                                          break;
                                  }
                              }while (chonTim!=0);
-                             timNhanVien();
                              break;
                          case 6:
                              ds.sapXepTen();
+                             break;
+                         case 7:
+                             ds.ghiFile();
+                             break;
+                         case 8:
+                             ds.docFile();
                              break;
                      }
                  }while (chonnv!=0);
@@ -143,6 +148,8 @@ public class main {
         System.out.println("4. Xem thông tin khách hàng");
         System.out.println("5. Tìm kiếm thông tin khách hàng");
         System.out.println("6. Sắp xếp theo lương");
+        System.out.println("7. Ghi file");
+        System.out.println("8. Đọc file");
     }
 
     public static void menuNhanvien()  {
@@ -153,6 +160,7 @@ public class main {
         System.out.println("4. Xem thông tin nhân viên");
         System.out.println("5. Tìm kiếm thông tin nhân viên");
         System.out.println("6. Sắp xếp theo tên");
+
     }
     public static void timNhanVien(){
         System.out.println("\n\t---Tìm kiếm---");
@@ -162,8 +170,8 @@ public class main {
     }
     public static void timKhachHang(){
         System.out.println("\n\t---Tìm kiếm---");
-        System.out.println("1. Tìm theo tên");
-        System.out.println("2. Tìm theo mã");
+        System.out.println("1. Tìm theo mã");
+        System.out.println("2. Tìm theo tên");
         System.out.println("3. Tìm theo quyền thành viên");
     }
 
