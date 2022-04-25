@@ -19,4 +19,6 @@ public class GD_KhachHang {
     private JButton btn_sua;
     private JButton btn_xoa;
     private JButton btn_sapxep;
+    private JTextField txt_timkiem;
+    private JButton btn_timkiem;
 }
