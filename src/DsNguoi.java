@@ -275,7 +275,13 @@ public class DsNguoi {
         hien("KhachHang");
     }
     public void sapXepLuong(){
-
+        ArrayList<NhanVien> dsnv = (ArrayList<NhanVien>) dsNg.clone();
+        Collections.sort(dsnv, new Comparator<NhanVien>() {
+            @Override
+            public int compare(NhanVien o1, NhanVien o2) {
+                return Double.compare(o1.tinhLuong(),o2.tinhLuong());
+            }
+        });
     }
 
     void ghiFile(){
