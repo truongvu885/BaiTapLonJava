@@ -1,6 +1,8 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class DsNguoi {
@@ -112,13 +114,16 @@ public class DsNguoi {
                     kh.hien();
                 }
             }
+            else {
+                System.out.println("Không có mã cần tìm");
+            }
         }
     }
     public void timKiemTen(){
         System.out.println("Tên cần tìm ");
         String ten = new Scanner(System.in).nextLine();
         for (Nguoi nguoi:dsNg) {
-            if(nguoi.getTen().equalsIgnoreCase(ten)){
+            if(nguoi.getTen().contains(ten)){
                 if(nguoi.getType().equalsIgnoreCase("NhanVien")){
                     NhanVien nv = (NhanVien) nguoi;
                     nv.hien();
@@ -127,6 +132,9 @@ public class DsNguoi {
                     KhachHang kh = (KhachHang) nguoi;
                     kh.hien();
                 }
+            }
+            else {
+                System.out.println("Không có tên cần tìm");
             }
         }
     }
@@ -138,6 +146,9 @@ public class DsNguoi {
             NhanVien nv = (NhanVien) nguoi;
             if(nv.getChucVu().equalsIgnoreCase(chucVu)){
                 nv.hien();
+            }
+            else {
+                System.out.println("Không có chức vụ cần tìm");
             }
         }
     }
@@ -258,4 +269,31 @@ public class DsNguoi {
                 }
         }
     }
+
+    public void sapXepTen(){
+        Collections.sort(dsNg,NguoiSort.NAME);
+        for (Nguoi nguoi:dsNg) {
+            nguoi.hien();
+        }
+        hien("KhachHang");
+    }
+    public void sapXepLuong(){
+        ArrayList<NhanVien> dsnv = new ArrayList<>();
+        for (Nguoi nguoi:dsNg) {
+            NhanVien nv = (NhanVien) nguoi;
+            dsnv.add(nv);
+        }
+
+        Collections.sort(dsnv, new Comparator<NhanVien>() {
+            @Override
+            public int compare(NhanVien o1, NhanVien o2) {
+                return Double.compare(o1.tinhLuong(),o2.tinhLuong());
+            }
+        });
+        hien("NhanVien");
+    }
 }
+class NguoiSort{
+    public static final Comparator<Nguoi> NAME = (Nguoi o1, Nguoi o2) -> o1.getTen().compareTo(o2.getTen());
+}
+
