@@ -25,14 +25,6 @@ public class Nguoi implements Serializable {
         this.gioiTinh = gioiTinh;
     }
 
-    public long getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(long sdt) {
-        this.sdt = sdt;
-    }
-
     public String getType() {
         return type;
     }
