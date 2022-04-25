@@ -299,8 +299,8 @@ public class DsNguoi {
         try {
             FileInputStream fis = new FileInputStream("D:/dsNguoi.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            ArrayList<Nguoi> dsf = (ArrayList<Nguoi>) ois.readObject();
-            for (Nguoi nguoi: dsf) {
+            dsNg = (ArrayList<Nguoi>) ois.readObject();
+            for (Nguoi nguoi: dsNg) {
                 nguoi.hien();
             }
         } catch (IOException e) {
