@@ -1,9 +1,10 @@
 package src;
 
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Nguoi {
+public class Nguoi implements Serializable {
     private long ma;
     private String ten;
     private String diaChi;
@@ -22,14 +23,6 @@ public class Nguoi {
         this.ngaySinh = ngaySinh;
         this.sdt = SDT;
         this.gioiTinh = gioiTinh;
-    }
-
-    public long getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(long sdt) {
-        this.sdt = sdt;
     }
 
     public String getType() {

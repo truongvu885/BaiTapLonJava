@@ -1,5 +1,6 @@
 package src;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -72,6 +73,7 @@ public class DsNguoi {
         }
     }
     public void hien(String type){
+
         switch (type){
             case "nguoi":
                 for (Nguoi nguoi:dsNg) {
@@ -187,7 +189,7 @@ public class DsNguoi {
         switch (type){
             case "NhanVien":
                 long maSua;
-                int chon;
+                int chon ;
                 while(true)
                 {
                     System.out.print("Nhập địa chỉ của nhân viên cần sửa");
@@ -202,15 +204,15 @@ public class DsNguoi {
                     if(nguoi.getMa()==maSua){
                         do {
                             System.out.println("0. Thoát");
-                            System.out.println("1. Sửa tên");
+                            System.out.println("1. Sửa số điện thoại");
                             System.out.println("2. Sửa địa chỉ");
                             System.out.print("Bạn chọn: ");
                             chon = new Scanner(System.in).nextInt();
                             switch (chon){
                                 case 1:
-                                    System.out.print("Nhập tên mới: ");
-                                    String tenSua = new Scanner(System.in).nextLine();
-                                    nguoi.setTen(tenSua);
+                                    System.out.print("Nhập SDT mới: ");
+                                    Long sdtSua = new Scanner(System.in).nextLong();
+                                    nguoi.setSDT(sdtSua);
                                     break;
                                 case 2:
                                     System.out.println("Nhập địa chỉ mới: ");
@@ -239,17 +241,11 @@ public class DsNguoi {
                         kh = (KhachHang) nguoi;
                         do {
                             System.out.println("0. Thoát");
-                            System.out.println("1. Sửa tên");
-                            System.out.println("2. Sửa quyền thành viên");
+                            System.out.println("1. Sửa quyền thành viên");
                             System.out.print("Bạn chọn: ");
                             chon = new Scanner(System.in).nextInt();
                             switch (chon){
                                 case 1:
-                                    System.out.print("Nhập tên mới: ");
-                                    String tenSua = new Scanner(System.in).nextLine();
-                                    nguoi.setTen(tenSua);
-                                    break;
-                                case 2:
 
                                     while(true)
                                     {
@@ -275,22 +271,43 @@ public class DsNguoi {
         for (Nguoi nguoi:dsNg) {
             nguoi.hien();
         }
+        System.out.println("\n\tDanh sách sau khi sắp xếp");
         hien("KhachHang");
     }
     public void sapXepLuong(){
-        ArrayList<NhanVien> dsnv = new ArrayList<>();
-        for (Nguoi nguoi:dsNg) {
-            NhanVien nv = (NhanVien) nguoi;
-            dsnv.add(nv);
-        }
-
+        ArrayList<NhanVien> dsnv = (ArrayList<NhanVien>) dsNg.clone();
         Collections.sort(dsnv, new Comparator<NhanVien>() {
             @Override
             public int compare(NhanVien o1, NhanVien o2) {
                 return Double.compare(o1.tinhLuong(),o2.tinhLuong());
             }
         });
-        hien("NhanVien");
+    }
+
+    void ghiFile(){
+        try {
+            FileOutputStream fos = new FileOutputStream("D:/dsNguoi.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(dsNg);
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    void docFile(){
+        try {
+            FileInputStream fis = new FileInputStream("D:/dsNguoi.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ArrayList<Nguoi> dsf = (ArrayList<Nguoi>) ois.readObject();
+            for (Nguoi nguoi: dsf) {
+                nguoi.hien();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
 class NguoiSort{

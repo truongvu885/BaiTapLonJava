@@ -1,8 +1,9 @@
 package src;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class NhanVien extends Nguoi{
+public class NhanVien extends Nguoi implements Serializable {
     private String ngayVaoLam;
     private final float luongCB =1150;
     private float phuCap;
@@ -114,11 +115,11 @@ public class NhanVien extends Nguoi{
     public void hienDt(){
         super.hienDt();
         System.out.printf("%15s|",this.ngayVaoLam);
-        System.out.printf("%12f|",this.hsl);
+        System.out.printf("%12.2f|",this.hsl);
         System.out.printf("%10s|",this.chucVu);
         System.out.printf("%10d|",this.maPB);
-        System.out.printf("%8f|",this.phuCap);
-        System.out.printf("%10d",this.tinhLuong());
+        System.out.printf("%8.2f|",this.phuCap);
+        System.out.printf("%10.2f|",this.tinhLuong());
         System.out.println("\n");
     }
     @Override
