@@ -67,7 +67,6 @@ public class NhanVien extends Nguoi{
     }
 
     public void nhap(){
-
         super.nhap();
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();
@@ -79,7 +78,7 @@ public class NhanVien extends Nguoi{
             System.out.print("Phòng ban: ");
             String maPBS = input.nextLine();
             if(kt.isLong(maPBS)){
-                this.hsl = Float.parseFloat(maPBS);
+                this.maPB = Integer.parseInt(maPBS);
                 break;
             }
         }
@@ -95,7 +94,7 @@ public class NhanVien extends Nguoi{
             System.out.print("Phụ cấp: ");
             String pcS = input.nextLine();
             if(kt.isLong(pcS)){
-                this.hsl = Float.parseFloat(pcS);
+                this.phuCap = Float.parseFloat(pcS);
                 break;
             }
         }
@@ -115,6 +114,7 @@ public class NhanVien extends Nguoi{
         System.out.printf("%10s|",this.chucVu);
         System.out.printf("%10d|",this.maPB);
         System.out.printf("%8f|",this.phuCap);
+        System.out.println("\n");
     }
     @Override
     public void hien(){

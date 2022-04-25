@@ -42,7 +42,7 @@ public class KhachHang extends Nguoi {
         this.ngayThueGan = ngayThueGan;
     }
 
-    private void KieuThanhVien(){
+    public void KieuThanhVien(){
         System.out.println("\t\t");
         System.out.println("0. Khách");
         System.out.println("1. Đồng");
@@ -76,7 +76,7 @@ public class KhachHang extends Nguoi {
         return kieuStr;
     }
     @Override
-    public void nhap(){
+    public void nhap() {
         super.nhap();
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();
@@ -111,9 +111,10 @@ public class KhachHang extends Nguoi {
     }
     public void hienDt(){
         super.hienDt();
-        System.out.printf("%15d",this.cccd);
-        System.out.printf("%10s",hienKieuThanhVien(this.thanhVien));
-        System.out.printf("%15s",this.ngayThueGan);
+        System.out.printf("%15d|",this.cccd);
+        System.out.printf("%10s|",hienKieuThanhVien(this.thanhVien));
+        System.out.printf("%15s|",this.ngayThueGan);
+        System.out.print("\n");
     }
     public void hien(){
         hienLb();
