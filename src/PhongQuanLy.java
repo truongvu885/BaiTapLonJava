@@ -8,8 +8,12 @@ public class PhongQuanLy {
     private String tenPB;
     private int soLuong;
 
-    ArrayList<PhongQuanLy> dsPQl = new ArrayList<>();
+    static ArrayList<PhongQuanLy> dsPQl = new ArrayList<>();
     KiemTraType kt = new KiemTraType();
+
+    public static ArrayList<PhongQuanLy> getDsPQl() {
+        return dsPQl;
+    }
 
     public PhongQuanLy() {
     }
@@ -57,14 +61,8 @@ public class PhongQuanLy {
         }
         System.out.print("Tên PB: ");
         this.tenPB = input.nextLine();
-        while(true){
-            System.out.print("Số lượng tv: ");
-            String slS = input.nextLine();
-            if(kt.isInt(slS)){
-                this.soLuong = Integer.parseInt(slS);
-                break;
-            }
-        }
+        int m = maPB;
+        String t = tenPB;
     }
     public void nhapDS(){
         int solp;
@@ -84,9 +82,33 @@ public class PhongQuanLy {
             dsPQl.add(pql);
         }
     }
-    public void hienDsMap(){
-        for (PhongQuanLy p:dsPQl) {
-            System.out.println(p.maPB+"\n");
+    public void hienLb(){
+        System.out.printf("%5s|%15s|%5s|","MãPB","Tên PB","SL");
+        System.out.print("\n");
+    }
+    public void hienDt(){
+        System.out.printf("%5d|",getMaPB());
+        System.out.printf("%15s|",getTenPB());
+        System.out.printf("%5d|",getSoLuong());
+        System.out.print("\n");
+    }
+    public void hien(){
+        hienLb();
+        for (PhongQuanLy ql : dsPQl) {
+            hienDt();
         }
+    }
+    public void hienMa(){
+        System.out.println("Mã PB: "+this.maPB);
+    }
+    public void demSonv(){
+        ArrayList<Nguoi> dsNg = DsNguoi.getDsNg();
+        int dem =0;
+        for (Nguoi nguoi:dsNg) {
+            if(nguoi.getType().equalsIgnoreCase("NhanVien")){
+                dem++;
+            }
+        }
+
     }
 }

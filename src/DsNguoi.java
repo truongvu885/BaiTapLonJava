@@ -1,6 +1,7 @@
 package src;
 
 import java.io.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,10 +9,10 @@ import java.util.Scanner;
 
 public class DsNguoi {
     KiemTraType kt = new KiemTraType();
-    ArrayList<Nguoi> dsNg = new ArrayList<>();
+    static ArrayList<Nguoi> dsNg = new ArrayList<>();
     int soluong ;
 
-    public ArrayList<Nguoi> getDsNg() {
+    public static ArrayList<Nguoi> getDsNg() {
         return dsNg;
     }
 
@@ -26,13 +27,13 @@ public class DsNguoi {
     }
     public void hienMa(){
         for (Nguoi nguoi:dsNg) {
-            System.out.println("---"+nguoi.getMa()+"\t");
+            System.out.print("--("+nguoi.getMa()+")--\t");
         }
     }
+
     public void nhap(String type) {
         switch (type){
             case "NhanVien":
-
                 while (true){
                     System.out.print("Nhập số lượng nhân viên muốn thêm: ");
                     String soluongS = new Scanner(System.in).nextLine();
@@ -42,8 +43,9 @@ public class DsNguoi {
                     }
                 }
                 for (int i = 0; i < soluong; i++) {
-                    System.out.println("Không thêm mã nhân viên đã tồn tại");
+                    System.out.print("Không thêm mã đã tồn tại: ");
                     hienMa();
+                    System.out.print("\n");
                     NhanVien nv = new NhanVien();
                     nv.nhap();
                     if(!kiemTraMa(nv.getMa())){
@@ -65,9 +67,17 @@ public class DsNguoi {
                     }
                 }
                 for (int i = 0; i < soluong; i++) {
+                    System.out.print("Không thêm mã đã tồn tại");
+                    hienMa();
                     KhachHang kh = new KhachHang();
                     kh.nhap();
-                    dsNg.add(kh);
+                    if(!kiemTraMa(kh.getMa())){
+                        dsNg.add(kh);
+                    }
+                    else {
+                        System.err.println("Không thêm được-Mã vừa nhập đã tồn tại");
+                        break;
+                    }
                 }
                 break;
         }
@@ -140,8 +150,7 @@ public class DsNguoi {
             }
         }
     }
-    public void timKiemChucVu()
-    {
+    public void timKiemChucVu() {
         System.out.println("Chức vụ cần tìm: ");
         String chucVu = new Scanner(System.in).nextLine();
         for (Nguoi nguoi:dsNg) {
@@ -199,7 +208,7 @@ public class DsNguoi {
                 int chon ;
                 while(true)
                 {
-                    System.out.print("Nhập địa chỉ của nhân viên cần sửa");
+                    System.out.print("Nhập mã của nhân viên cần sửa");
                     String maSuaS = new Scanner(System.in).nextLine();
                     if(kt.isLong(maSuaS)){
                         maSua = Long.parseLong(maSuaS);
@@ -212,7 +221,7 @@ public class DsNguoi {
                         do {
                             System.out.println("0. Thoát");
                             System.out.println("1. Sửa số điện thoại");
-                            System.out.println("2. Sửa địa chỉ");
+                           // System.out.println("2. Sửa địa chỉ");
                             System.out.print("Bạn chọn: ");
                             chon = new Scanner(System.in).nextInt();
                             switch (chon){
@@ -221,11 +230,11 @@ public class DsNguoi {
                                     Long sdtSua = new Scanner(System.in).nextLong();
                                     nguoi.setSDT(sdtSua);
                                     break;
-                                case 2:
-                                    System.out.println("Nhập địa chỉ mới: ");
-                                    String diachiSua = new Scanner(System.in).nextLine();
-                                    nguoi.setDiaChi(diachiSua);
-                                    break;
+//                                case 2:
+//                                    System.out.println("Nhập địa chỉ mới: ");
+//                                    String diachiSua = new Scanner(System.in).nextLine();
+//                                    nguoi.setDiaChi(diachiSua);
+//                                    break;
                             }
                         }while (chon!=0);
                     }
@@ -274,23 +283,57 @@ public class DsNguoi {
     }
 
     public void sapXepTen(){
-        Collections.sort(dsNg,NguoiSort.NAME);
-        for (Nguoi nguoi:dsNg) {
-            nguoi.hien();
-        }
+        Collections.sort(dsNg,NguoiSort.TEN);
         System.out.println("\n\tDanh sách sau khi sắp xếp");
-        hien("KhachHang");
+        Nguoi ng = new Nguoi();
+        ng.hienLb();
+        for (Nguoi nguoi:dsNg) {
+            nguoi.hienDt();
+        }
     }
-    public void sapXepLuong(){
-        ArrayList<NhanVien> dsnv = (ArrayList<NhanVien>) dsNg.clone();
-        Collections.sort(dsnv, new Comparator<NhanVien>() {
-            @Override
-            public int compare(NhanVien o1, NhanVien o2) {
-                return Double.compare(o1.tinhLuong(),o2.tinhLuong());
-            }
-        });
+    public void sapXepTuoi(){
+        Collections.sort(dsNg,NguoiSort.TUOI);
+        System.out.println("\n\tDanh sách sau khi sắp xếp");
+        Nguoi ng = new Nguoi();
+        ng.hienLb();
+        for (Nguoi nguoi:dsNg) {
+            nguoi.hienDt();
+        }
     }
 
+    public void sapXepLuong(){
+        ArrayList<NhanVien> dsnv = new ArrayList<>();
+        for (Nguoi nguoi:dsNg) {
+            if(nguoi.getType().equalsIgnoreCase("NhanVien")){
+                NhanVien nv = (NhanVien) nguoi;
+                dsnv.add(nv);
+            }
+        }
+        Collections.sort(dsnv, (o1, o2) -> Double.compare(o1.getLuong(), o2.getLuong()));
+        hien("NhanVien");
+    }
+
+    void docFile(String type1,String type2){
+        try {
+            FileInputStream fis = new FileInputStream("D:/dsNguoi.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            dsNg = (ArrayList<Nguoi>) ois.readObject();
+            for (Nguoi nguoi: dsNg) {
+                if(nguoi.getType().equalsIgnoreCase(type1)){
+                    NhanVien nv = (NhanVien) nguoi;
+                    nv.hien();
+                }
+                else if(nguoi.getType().equalsIgnoreCase(type2)){
+                    KhachHang kh = (KhachHang) nguoi;
+                    kh.hien();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     void ghiFile(){
         try {
             FileOutputStream fos = new FileOutputStream("D:/dsNguoi.bin");
@@ -302,22 +345,16 @@ public class DsNguoi {
             e.printStackTrace();
         }
     }
-    void docFile(){
-        try {
-            FileInputStream fis = new FileInputStream("D:/dsNguoi.bin");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            dsNg = (ArrayList<Nguoi>) ois.readObject();
-            for (Nguoi nguoi: dsNg) {
-                nguoi.hien();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }
 class NguoiSort{
-    public static final Comparator<Nguoi> NAME = (Nguoi o1, Nguoi o2) -> o1.getTen().compareTo(o2.getTen());
+    public static final Comparator<Nguoi> TEN = (Nguoi o1, Nguoi o2) -> o1.getTen().compareTo(o2.getTen());
+    public static final Comparator<NhanVien> LUONG = (NhanVien o1, NhanVien o2) -> Double.compare(o1.getLuong(),o2.getLuong());
+    public static final Comparator<Nguoi> TUOI = (Nguoi o1, Nguoi o2) -> {
+        try {
+            return Integer.compare(o1.tinhTuoi(),o2.tinhTuoi());
+        } catch (ParseException e) {
+           return 0;
+        }
+    };
 }
 

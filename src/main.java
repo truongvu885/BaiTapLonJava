@@ -65,6 +65,15 @@ public class main {
                              break;
                          case 6:
                              ds.sapXepLuong();
+                             //ds.sapXepTuoi();
+                             break;
+                         case 7:
+                             //ds.ghiFile("NhanVien");
+                             ds.ghiFile();
+                             break;
+                         case 8:
+                             //ds.docFile("NhanVien");
+                             ds.docFile("NhanVien",null);
                              break;
                      }
                  }while (chonnv!=0);
@@ -75,13 +84,13 @@ public class main {
                      menuKhachHang();
                      while (true){
                          System.out.print("Bạn chọn: ");
-                         String chonnvS = new Scanner(System.in).nextLine();
-                         if(kt.isInt(chonnvS)){
-                             chonnv = Integer.parseInt(chonnvS);
+                         String chonkhS = new Scanner(System.in).nextLine();
+                         if(kt.isInt(chonkhS)){
+                             chonkh = Integer.parseInt(chonkhS);
                              break;
                          }
                      }
-                     switch (chonnv){
+                     switch (chonkh){
                          case 1:
                              ds.nhap("KhachHang");
                              break;
@@ -117,16 +126,32 @@ public class main {
                              ds.sapXepTen();
                              break;
                          case 7:
+                            // ds.ghiFile("KhachHang");
                              ds.ghiFile();
                              break;
                          case 8:
-                             ds.docFile();
+                            // ds.docFile("KhachHang");
+                             ds.docFile(null,"KhachHang");
                              break;
                      }
-                 }while (chonnv!=0);
+                 }while (chonkh!=0);
                  break;
-
-
+             case 3:
+                 PhongQuanLy ql = new PhongQuanLy();
+                 ql.nhapDS();
+                 ql.hien();
+                 //ql.demSonv();
+                 break;
+             case 4:
+                 break;
+             case 5:
+                 DichVu dv = new DichVu();
+                 dv.nhap();
+                 dv.hienLb();
+                 dv.hienDt();
+                 break;
+             case 6:
+                 break;
          }
      }while (chon!=0);
     }
@@ -147,7 +172,7 @@ public class main {
         System.out.println("3. Xóa khách hàng");
         System.out.println("4. Xem thông tin khách hàng");
         System.out.println("5. Tìm kiếm thông tin khách hàng");
-        System.out.println("6. Sắp xếp theo lương");
+        System.out.println("6. Sắp xếp theo tên");
         System.out.println("7. Ghi file");
         System.out.println("8. Đọc file");
     }
@@ -159,8 +184,9 @@ public class main {
         System.out.println("3. Xóa nhân viên");
         System.out.println("4. Xem thông tin nhân viên");
         System.out.println("5. Tìm kiếm thông tin nhân viên");
-        System.out.println("6. Sắp xếp theo tên");
-
+        System.out.println("6. Sắp xếp theo lương");
+        System.out.println("7. Ghi file");
+        System.out.println("8. Đọc file");
     }
     public static void timNhanVien(){
         System.out.println("\n\t---Tìm kiếm---");
@@ -174,5 +200,4 @@ public class main {
         System.out.println("2. Tìm theo tên");
         System.out.println("3. Tìm theo quyền thành viên");
     }
-
 }

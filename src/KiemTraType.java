@@ -25,4 +25,12 @@ public class KiemTraType {
             return false;
         }
     }
+    public boolean isBoolean(String s){
+        try {
+            Boolean.parseBoolean(s);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }
 }

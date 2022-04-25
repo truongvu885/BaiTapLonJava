@@ -1,6 +1,8 @@
 package src;
 
 import java.io.Serializable;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NhanVien extends Nguoi implements Serializable {
@@ -10,7 +12,7 @@ public class NhanVien extends Nguoi implements Serializable {
     private float hsl;
     private String chucVu;
     private int maPB;
-
+    private double luong;
     public NhanVien() {
 
     }
@@ -68,8 +70,15 @@ public class NhanVien extends Nguoi implements Serializable {
         this.maPB = maPB;
     }
 
-    public double tinhLuong(){
-        return this.luongCB*this.hsl + phuCap;
+    public double getLuong() {
+        this.luong=this.luongCB*this.hsl + phuCap;
+        return luong;
+    }
+    public void showMapb(){
+        ArrayList<PhongQuanLy> dsql = PhongQuanLy.getDsPQl();
+        for (PhongQuanLy ql:dsql) {
+            ql.hienMa();
+        }
     }
     public void nhap(){
         super.nhap();
@@ -80,7 +89,8 @@ public class NhanVien extends Nguoi implements Serializable {
         System.out.print("Chức vụ: ");
         this.chucVu = input.nextLine();
         while(true){
-            System.out.print("Phòng ban: ");
+            System.out.println("Phòng ban ");
+            showMapb();
             String maPBS = input.nextLine();
             if(kt.isLong(maPBS)){
                 this.maPB = Integer.parseInt(maPBS);
@@ -119,8 +129,8 @@ public class NhanVien extends Nguoi implements Serializable {
         System.out.printf("%10s|",this.chucVu);
         System.out.printf("%10d|",this.maPB);
         System.out.printf("%8.2f|",this.phuCap);
-        System.out.printf("%10.2f|",this.tinhLuong());
-        System.out.println("\n");
+        System.out.printf("%10.2f|",this.getLuong());
+        System.out.print("\n");
     }
     @Override
     public void hien(){

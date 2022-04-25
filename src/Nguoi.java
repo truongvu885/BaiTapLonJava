@@ -2,6 +2,10 @@ package src;
 
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Nguoi implements Serializable {
@@ -79,6 +83,24 @@ public class Nguoi implements Serializable {
 
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
+    }
+
+    public int tinhTuoi() throws ParseException {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = sdf.parse(this.ngaySinh);
+            Calendar cld = Calendar.getInstance();
+            cld.setTime(date);
+            int namSinh = cld.get(Calendar.YEAR);
+            Calendar cld2= Calendar.getInstance();
+            cld.setTime(new Date());
+            int namHtai = cld2.get(Calendar.YEAR);
+            int tuoi = namHtai - namSinh;
+            return tuoi;
+        }
+        catch (ParseException e){
+            return 0;
+        }
     }
     public void nhap(){
         Scanner input = new Scanner(System.in);
