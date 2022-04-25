@@ -44,6 +44,11 @@ public class DsNguoi {
     }
     public void hien(String type){
         switch (type){
+            case "nguoi":
+                for (Nguoi nguoi:dsNg) {
+                    nguoi.hien();
+                }
+                break;
             case "NhanVien":
                 for (Nguoi nguoi : dsNg) {
                     if(nguoi.getType().equalsIgnoreCase("NhanVien")){
