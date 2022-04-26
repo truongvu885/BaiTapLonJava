@@ -101,8 +101,9 @@ public class DichVu implements Serializable {
             FileInputStream fis = new FileInputStream("D:/dsDvu.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             dsdv = (ArrayList<DichVu>) ois.readObject();
+            hienLb();
             for (DichVu dv : dsdv) {
-                dv.hienDsDv();
+                dv.hienDt();
             }
         } catch (IOException e) {
             e.printStackTrace();
