@@ -95,7 +95,7 @@ public class PhongQuanLy {
     public void hien(){
         hienLb();
         for (PhongQuanLy ql : dsPQl) {
-            hienDt();
+            ql.hienDt();
         }
     }
     public void hienMa(){

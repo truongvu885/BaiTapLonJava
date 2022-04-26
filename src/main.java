@@ -143,6 +143,9 @@ public class main {
                  //ql.demSonv();
                  break;
              case 4:
+                 Phong p = new Phong();
+                 p.nhapDSphong();
+                 p.hienDSphong();
                  break;
              case 5:
                  DichVu dv = new DichVu();
