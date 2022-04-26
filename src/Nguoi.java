@@ -19,6 +19,7 @@ public class Nguoi implements Serializable {
     private String type;
 
     ArrayList<Nguoi> dsNg = DsNguoi.getDsNg();
+
     public Nguoi() {
     }
 
@@ -94,87 +95,95 @@ public class Nguoi implements Serializable {
             Calendar cld = Calendar.getInstance();
             cld.setTime(date);
             int namSinh = cld.get(Calendar.YEAR);
-            Calendar cld2= Calendar.getInstance();
+            Calendar cld2 = Calendar.getInstance();
             cld.setTime(new Date());
             int namHtai = cld2.get(Calendar.YEAR);
             int tuoi = namHtai - namSinh;
             return tuoi;
-        }
-        catch (ParseException e){
+        } catch (ParseException e) {
             return 0;
         }
     }
-    public void showMaNg(){
-        for (Nguoi nguoi:dsNg) {
+
+    public void showMaNg() {
+        for (Nguoi nguoi : dsNg) {
             nguoi.hienMaNg();
         }
     }
-    public boolean kiemTraMaNg(long ma){
-        for (Nguoi nguoi:dsNg) {
-            if(nguoi.getMa()==ma){
+
+    public boolean kiemTraMaNg(long ma) {
+        for (Nguoi nguoi : dsNg) {
+            if (nguoi.getMa() == ma) {
                 return true;
             }
         }
         return false;
     }
-    public void nhap(){
+
+    public void nhap() {
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();
-        while (true)
-        {
+        while (true) {
             System.out.print("Không nhập mã đã tồn tại: ");
             showMaNg();
             System.out.println();
             System.out.print("Mã: ");
             String maS = input.nextLine();
-            if(kt.isLong(maS)){
+            if (kt.isLong(maS)) {
                 this.ma = Long.parseLong(maS);
-                if(!kiemTraMaNg(this.ma)){
+                if (!kiemTraMaNg(this.ma)) {
                     break;
                 }
             }
         }
         System.out.print("Tên: ");
         this.ten = input.nextLine();
-        System.out.print("Ngày sinh(dd/mm/yyy): ");
-        this.ngaySinh = input.nextLine();
-        while(true)
-        {
+        while (true){
+            System.out.print("Ngày sinh: ");
+            this.ngaySinh = input.nextLine();
+            if(kt.isDate(this.ngaySinh)){
+                break;
+            }
+        }
+        while (true) {
             System.out.print("Giới tính: ");
             this.gioiTinh = input.nextLine();
-            if(this.gioiTinh.equalsIgnoreCase("Nam") || this.gioiTinh.equalsIgnoreCase("Nữ")){
+            if (this.gioiTinh.equalsIgnoreCase("Nam") || this.gioiTinh.equalsIgnoreCase("Nữ")) {
                 break;
             }
         }
         System.out.print("Địa chỉ: ");
         this.diaChi = input.nextLine();
-        while (true)
-        {
+        while (true) {
             System.out.print("Số điện thoại: ");
             String sdtS = input.nextLine();
-            if(kt.isLong(sdtS)){
+            if (kt.isLong(sdtS)) {
                 this.sdt = Long.parseLong(sdtS);
                 break;
             }
         }
     }
-    protected void hienLb(){
-        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT");
+
+    protected void hienLb() {
+        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|", "Mã", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số ĐT");
         System.out.print("\n");
     }
-    protected void hienDt(){
-        System.out.printf("%5d|",this.ma);
-        System.out.printf("%20s|",this.ten);
-        System.out.printf("%15s|",this.ngaySinh);
-        System.out.printf("%10s|",this.gioiTinh);
-        System.out.printf("%20s|",this.diaChi);
-        System.out.printf("%12s|",this.sdt);
+
+    protected void hienDt() {
+        System.out.printf("%5d|", this.ma);
+        System.out.printf("%20s|", this.ten);
+        System.out.printf("%15s|", this.ngaySinh);
+        System.out.printf("%10s|", this.gioiTinh);
+        System.out.printf("%20s|", this.diaChi);
+        System.out.printf("%12s|", this.sdt);
     }
-    public void hien(){
+
+    public void hien() {
         hienLb();
         hienDt();
     }
-    public void hienMaNg(){
-        System.out.print("--Mã :("+getMa()+")--");
+
+    public void hienMaNg() {
+        System.out.print("--Mã :(" + getMa() + ")--");
     }
 }
