@@ -48,7 +48,8 @@ public class DichVu {
         this.giaDV = Float.parseFloat(input.nextLine());
     }
     public void hienLb(){
-        System.out.printf("%5s|%15s|%10s|","Mã dv","Tên dv","Giá"+"\n");
+        System.out.printf("%5s|%15s|%10s|","Mã dv","Tên dv","Giá");
+        System.out.println();
     }
     public void hienDt(){
         System.out.printf("%5d|",this.maLoaiDV);
@@ -73,9 +74,7 @@ public class DichVu {
        }
    }
    public void hienMaDv(){
-       System.out.println("----------");
-       System.out.print("--("+getMaLoaiDV()+")--\n");
-       System.out.println("----------");
+       System.out.print("--Mã DV:("+getMaLoaiDV()+")--");
    }
    public void ghiFile(){
        try {

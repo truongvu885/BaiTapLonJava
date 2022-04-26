@@ -4,6 +4,7 @@ package src;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class Nguoi implements Serializable {
     private String gioiTinh;
     private String type;
 
+    ArrayList<Nguoi> dsNg = DsNguoi.getDsNg();
     public Nguoi() {
     }
 
@@ -102,16 +104,34 @@ public class Nguoi implements Serializable {
             return 0;
         }
     }
+    public void showMaNg(){
+        for (Nguoi nguoi:dsNg) {
+            nguoi.hienMaNg();
+        }
+    }
+    public boolean kiemTraMaNg(long ma){
+        for (Nguoi nguoi:dsNg) {
+            if(nguoi.getMa()==ma){
+                return true;
+            }
+        }
+        return false;
+    }
     public void nhap(){
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();
         while (true)
         {
+            System.out.print("Không nhập mã đã tồn tại: ");
+            showMaNg();
+            System.out.println();
             System.out.print("Mã: ");
             String maS = input.nextLine();
             if(kt.isLong(maS)){
                 this.ma = Long.parseLong(maS);
-                break;
+                if(!kiemTraMaNg(this.ma)){
+                    break;
+                }
             }
         }
         System.out.print("Tên: ");
@@ -153,5 +173,8 @@ public class Nguoi implements Serializable {
     public void hien(){
         hienLb();
         hienDt();
+    }
+    public void hienMaNg(){
+        System.out.print("--Mã :("+getMa()+")--");
     }
 }

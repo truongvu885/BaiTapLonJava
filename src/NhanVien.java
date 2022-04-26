@@ -16,6 +16,8 @@ public class NhanVien extends Nguoi implements Serializable {
     public NhanVien() {
 
     }
+    ArrayList<PhongQuanLy> dsql = PhongQuanLy.getDsPQl();
+
 
     public NhanVien(long ma, String ten, String diaChi, String ngaySinh, long SDT, String gioiTinh, String ngayVaoLam, float phuCap, float hsl, String chucVu, int maPB) {
         super(ma, ten, diaChi, ngaySinh, SDT, gioiTinh);
@@ -75,11 +77,19 @@ public class NhanVien extends Nguoi implements Serializable {
         return luong;
     }
     public void showMapb(){
-        ArrayList<PhongQuanLy> dsql = PhongQuanLy.getDsPQl();
         for (PhongQuanLy ql:dsql) {
             ql.hienMa();
         }
     }
+    public boolean kiemTraMap(int map){
+        for (PhongQuanLy ql:dsql) {
+            if(ql.getMaPB()==map){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void nhap(){
         super.nhap();
         Scanner input = new Scanner(System.in);
@@ -94,7 +104,9 @@ public class NhanVien extends Nguoi implements Serializable {
             String maPBS = input.nextLine();
             if(kt.isLong(maPBS)){
                 this.maPB = Integer.parseInt(maPBS);
-                break;
+                if(kiemTraMap(this.maPB)){
+                    break;
+                }
             }
         }
         while (true){
@@ -114,6 +126,8 @@ public class NhanVien extends Nguoi implements Serializable {
             }
         }
         super.setType("NhanVien");
+        int i = PhongQuanLy.slnv() + 1;
+        PhongQuanLy.setSoLuong(i);
     }
     @Override
     public void hienLb(){
@@ -138,8 +152,6 @@ public class NhanVien extends Nguoi implements Serializable {
         this.hienDt();
     }
     public void hienMaNV(){
-        System.out.println("----------");
-        System.out.print("--("+getMa()+")--\n");
-        System.out.println("----------");
+        System.out.print("--Mã NV:("+getMa()+")--");
     }
 }
