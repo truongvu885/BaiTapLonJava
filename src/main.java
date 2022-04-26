@@ -267,6 +267,7 @@ public class main {
         }
         if(dem1!=0 && dem2!=0 && dem3!=0){
             return true;
+
         }
         else return false;
     }
