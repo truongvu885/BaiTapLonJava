@@ -126,6 +126,8 @@ public class NhanVien extends Nguoi implements Serializable {
             }
         }
         super.setType("NhanVien");
+        int i = PhongQuanLy.slnv() + 1;
+        PhongQuanLy.setSoLuong(i);
     }
     @Override
     public void hienLb(){

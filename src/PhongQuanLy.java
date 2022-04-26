@@ -7,13 +7,16 @@ import java.util.Scanner;
 public class PhongQuanLy implements Serializable {
     private int maPB;
     private String tenPB;
-    private int soLuong;
+    private static int soLuong;
 
     static ArrayList<PhongQuanLy> dsPQl = new ArrayList<>();
     KiemTraType kt = new KiemTraType();
 
     public static ArrayList<PhongQuanLy> getDsPQl() {
         return dsPQl;
+    }
+    public static int slnv(){
+        return soLuong;
     }
 
     public PhongQuanLy() {
@@ -45,8 +48,8 @@ public class PhongQuanLy implements Serializable {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public static void setSoLuong(int soLuong) {
+        PhongQuanLy.soLuong = soLuong;
     }
     public void nhap(){
         Scanner input = new Scanner(System.in);
