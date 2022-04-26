@@ -10,7 +10,7 @@ public class Phong {
     private float giaP;
     private String trangThai;
 
-     static ArrayList<Phong> dsP = new ArrayList<>();
+    static ArrayList<Phong> dsP = new ArrayList<>();
 
     public static ArrayList<Phong> getDsP() {
         return dsP;
@@ -56,7 +56,7 @@ public class Phong {
         this.giaP = giaP;
         this.trangThai = trangThai;
     }
-    //Nhập nài
+
     public void nhap(){
         Scanner input = new Scanner(System.in);
         System.out.print("\nMã phòng: ");
@@ -70,7 +70,6 @@ public class Phong {
         this.trangThai = input.nextLine();
 
     }
-    //hiện nài
     public void hienLb(){
         System.out.printf("%5s|%15s|%15s|%10s|","Mã","Loại phòng","Giá phòng","Trạng thái");
         System.out.print("\n");
