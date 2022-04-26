@@ -71,6 +71,7 @@ public class Phong implements Serializable {
     }
 
     public void hienLb() {
+        System.out.println("\n\t------Danh sách phòng-----");
         System.out.printf("%5s|%15s|%15s|%10s|", "Mã", "Loại phòng", "Giá phòng", "Trạng thái");
         System.out.print("\n");
     }

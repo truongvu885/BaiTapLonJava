@@ -143,6 +143,7 @@ public class NhanVien extends Nguoi implements Serializable {
 
     @Override
     public void hienLb() {
+        System.out.println("\n\t------Danh sách nhân viên-----");
         System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|%10s|", "Mã", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số ĐT",
                 "Ngày vào làm", "Hệ số lương", "Chức vụ", "Phòng ban", "Phụ cấp", "Lương");
         System.out.print("\n");

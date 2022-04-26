@@ -98,6 +98,7 @@ public class KhachHang extends Nguoi {
     }
 
     public void hienLb() {
+        System.out.println("\n\t------Danh sách khách hàng-----");
         System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%10s|%15s|", "Mã", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số ĐT", "CCCD", "Thành viên", "Ngày thuê gần");
         System.out.print("\n");
     }

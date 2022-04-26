@@ -50,6 +50,7 @@ public class DichVu implements Serializable {
     }
 
     public void hienLb() {
+        System.out.println("\n\t------Danh sách dịch vụ----");
         System.out.printf("%5s|%15s|%10s|", "Mã dv", "Tên dv", "Giá");
         System.out.println();
     }

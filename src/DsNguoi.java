@@ -300,10 +300,10 @@ public class DsNguoi {
             for (Nguoi nguoi : dsNg) {
                 if (nguoi.getType().equalsIgnoreCase(type1)) {
                     NhanVien nv = (NhanVien) nguoi;
-                    nv.hien();
+                    nv.hienDt();
                 } else if (nguoi.getType().equalsIgnoreCase(type2)) {
                     KhachHang kh = (KhachHang) nguoi;
-                    kh.hien();
+                    kh.hienDt();
                 }
             }
         } catch (IOException e) {

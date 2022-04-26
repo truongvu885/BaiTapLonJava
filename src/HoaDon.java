@@ -323,6 +323,7 @@ public class HoaDon {
     }
 
     public void hienLb() {
+        System.out.println("\n\t------Danh sách hóa đơn-----");
         System.out.printf("%5s|%20s|%20s|%15s|%15s|%10s|%10s|%10s|", "Mã HD", "Tên NV", "Tên KH", "Loại P", "Dịch vụ", "Ngày thuê", "Ngày trả", "Tổng tiền");
         System.out.println();
     }
@@ -365,5 +366,33 @@ public class HoaDon {
                 return Double.compare(o1.getTongTien(),o2.getTongTien());
             }
         });
+    }
+    public double timHoaDonMax(){
+        double max = 0;
+        for (HoaDon hd :dsHd) {
+            if(hd.getTongTien()>max){
+                max = hd.getTongTien();
+            }
+            else max = max;
+        }
+        return max;
+    }
+    public double timHoaDonMin(){
+        double min = timHoaDonMax();
+        for (HoaDon hd :dsHd) {
+            if(hd.getTongTien()<min){
+                min = hd.getTongTien();
+            }
+            else min = min;
+        }
+        return min;
+    }
+    public void hienMax(){
+        hienLb();
+        for (HoaDon hd:dsHd) {
+            if(hd.getTongTien()==timHoaDonMax()){
+                hd.hienDt();
+            }
+        }
     }
 }

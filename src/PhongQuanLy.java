@@ -90,6 +90,7 @@ public class PhongQuanLy implements Serializable {
     }
 
     public void hienLb() {
+        System.out.println("\n\t------Danh sách phòng ban-----");
         System.out.printf("%5s|%15s|%5s|", "MãPB", "Tên PB", "SL");
         System.out.print("\n");
     }
