@@ -16,6 +16,20 @@ public class DsNguoi {
         return dsNg;
     }
 
+    public boolean kiemTraMa(long makt){
+            for (Nguoi nguoi:dsNg) {
+                if(nguoi.getMa()==makt){
+                    return true;
+            }
+                else return false;
+        }
+            return false;
+    }
+    public void hienMa(){
+        for (Nguoi nguoi:dsNg) {
+            System.out.print("--("+nguoi.getMa()+")--");
+        }
+    }
     public void nhap(String type) {
         switch (type){
             case "NhanVien":
@@ -28,10 +42,18 @@ public class DsNguoi {
                     }
                 }
                 for (int i = 0; i < soluong; i++) {
+                    System.out.print("Xx Không thêm mã đã tồn tại xX");
+                    hienMa();
+                    System.out.print("\n");
                     NhanVien nv = new NhanVien();
                     nv.nhap();
-                    dsNg.add(nv);
-
+                    if(!kiemTraMa(nv.getMa())){
+                        dsNg.add(nv);
+                    }
+                    else {
+                        System.err.println("Không thêm được - Mã nhân viên vừa nhập đã tồn tại");
+                        break;
+                    }
                 }
                 break;
             case "KhachHang":
@@ -44,10 +66,17 @@ public class DsNguoi {
                     }
                 }
                 for (int i = 0; i < soluong; i++) {
+                    System.out.print("Xx Không thêm mã đã tồn tại xX");
+                    hienMa();
                     KhachHang kh = new KhachHang();
                     kh.nhap();
-                    dsNg.add(kh);
-
+                    if(!kiemTraMa(kh.getMa())){
+                        dsNg.add(kh);
+                    }
+                    else {
+                        System.err.println("Không thêm được - Mã vừa nhập đã tồn tại");
+                        break;
+                    }
                 }
                 break;
         }
@@ -101,7 +130,7 @@ public class DsNguoi {
             }
         }
     }
-    public void timKiemTen(){
+    /*public void timKiemTen(){
         System.out.println("Tên cần tìm ");
         String ten = new Scanner(System.in).nextLine();
         for (Nguoi nguoi:dsNg) {
@@ -114,13 +143,13 @@ public class DsNguoi {
                     KhachHang kh = (KhachHang) nguoi;
                     kh.hien();
                 }
-            }
-            else {
+            } else {
                 System.out.println("Không có tên cần tìm");
             }
         }
-    }
-    public void timKiemChucVu() {
+    }*/
+
+    /*public void timKiemChucVu() {
         System.out.println("Chức vụ cần tìm: ");
         String chucVu = new Scanner(System.in).nextLine();
         for (Nguoi nguoi:dsNg) {
@@ -132,8 +161,8 @@ public class DsNguoi {
                 System.out.println("Không có chức vụ cần tìm");
             }
         }
-    }
-    public void timKiemThanhVien(){
+    }*/
+    /*public void timKiemThanhVien(){
         KhachHang kh = new KhachHang();
         int tv;
         System.out.println("Bạn muốn tìm khách hàng nào ");
@@ -151,7 +180,7 @@ public class DsNguoi {
                  kh.hien();
              }
         }
-    }
+    }*/
     public void xoa(){
         long maXoa;
         while (true)
@@ -186,6 +215,7 @@ public class DsNguoi {
                 }
                 for (Nguoi nguoi:dsNg) {
                     if(nguoi.getMa()==maSua){
+
                         do {
                             System.out.println("0. Thoát");
                             System.out.println("1. Sửa số điện thoại");
@@ -224,7 +254,7 @@ public class DsNguoi {
                         kh = (KhachHang) nguoi;
                         do {
                             System.out.println("0. Thoát");
-                            System.out.println("1. Sửa quyền thành viên");
+                            System.out.println("1. Sửa thành viên");
                             System.out.print("Bạn chọn: ");
                             chon = new Scanner(System.in).nextInt();
                             switch (chon){
@@ -232,7 +262,7 @@ public class DsNguoi {
 
                                     while(true)
                                     {
-                                        System.out.println("Nhập quyền thành viên mới: ");
+                                        System.out.println("Nhập hạng thành viên mới: ");
                                         kh.KieuThanhVien();
                                         String thVienS = new Scanner(System.in).nextLine();
                                         if(kt.isInt(thVienS))
