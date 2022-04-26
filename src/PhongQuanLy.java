@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PhongQuanLy {
+public class PhongQuanLy implements Serializable {
     private int maPB;
     private String tenPB;
     private int soLuong;
@@ -93,7 +93,7 @@ public class PhongQuanLy {
         System.out.printf("%5d|",getSoLuong());
         System.out.print("\n");
     }
-    public void hien(){
+    public void hienDS(){
         hienLb();
         for (PhongQuanLy ql : dsPQl) {
             ql.hienDt();

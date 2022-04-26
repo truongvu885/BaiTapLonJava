@@ -19,10 +19,33 @@ public class main {
          }
          switch (chon){
              case 1:
-                 PhongQuanLy ql = new PhongQuanLy();
-                 ql.nhapDS();
-                 ql.hien();
-                 //ql.demSonv();
+                 int chonpql;
+                 do {
+                     menuPhongQuanLy();
+                     PhongQuanLy pql = new PhongQuanLy();
+                     while (true){
+                         System.out.print("Bạn chọn: ");
+                         String chonPqlS = new Scanner(System.in).nextLine();
+                         if(kt.isInt(chonPqlS)){
+                             chonpql = Integer.parseInt(chonPqlS);
+                             break;
+                         }
+                     }
+                     switch (chonpql){
+                         case 1:
+                             pql.nhapDS();
+                             break;
+                         case 2:
+                             pql.hienDS();
+                             break;
+                         case 3:
+                             pql.ghiFile();
+                             break;
+                         case 4:
+                             pql.docFile();
+                             break;
+                     }
+                 }while (chonpql!=0);
                  break;
              case 2:
                  int chonp;
@@ -207,5 +230,12 @@ public class main {
         System.out.println("6. Xóa phòng ");
         System.out.println("7. Tìm phòng ");
         System.out.println("8. Sắp xếp phòng ");
+    }
+    public static void menuPhongQuanLy(){
+        System.out.println("-----Phòng-----");
+        System.out.println("1. Nhập ");
+        System.out.println("2. Hiện ");
+        System.out.println("3. Ghi file");
+        System.out.println("4. Đọc file");
     }
 }
