@@ -1,5 +1,6 @@
 package src;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -108,6 +109,32 @@ public class PhongQuanLy {
             if(nguoi.getType().equalsIgnoreCase("NhanVien")){
                 dem++;
             }
+        }
+    }
+    public void ghiFile(){
+        try {
+            FileOutputStream fos = new FileOutputStream("D:/dsPhongQuanLy.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(dsPQl);
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void docFile(){
+        try {
+            FileInputStream fis = new FileInputStream("D:/dsPhongQuanLy.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            dsPQl = (ArrayList<PhongQuanLy>) ois.readObject();
+            hienLb();
+            for (PhongQuanLy pql: dsPQl) {
+                pql.hienDt();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
