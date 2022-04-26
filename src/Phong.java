@@ -9,7 +9,7 @@ public class Phong implements Serializable{
     private String loaiP;
     private float giaP;
     private String trangThai;
-
+    KiemTraType kt = new KiemTraType();
     static ArrayList<Phong> dsP = new ArrayList<>();
 
     public static ArrayList<Phong> getDsP() {
@@ -70,6 +70,7 @@ public class Phong implements Serializable{
         this.trangThai = input.nextLine();
 
     }
+
     public void hienLb(){
         System.out.printf("%5s|%15s|%15s|%10s|","Mã","Loại phòng","Giá phòng","Trạng thái");
         System.out.print("\n");
@@ -130,6 +131,15 @@ public class Phong implements Serializable{
         }
     }
     public void suaP(){
+
+    }
+    public void xoaP(){
+
+    }
+    public void timkiemP(){
+
+    }
+    public void sapxepP(){
 
     }
 }

@@ -44,33 +44,21 @@ public class KhachHang extends Nguoi {
 
     public void KieuThanhVien(){
         System.out.print("\t\t");
-        System.out.println("0. Khách");
-        System.out.println("1. Đồng");
-        System.out.println("2. Bạc");
-        System.out.println("3. Vàng");
-        System.out.println("4. Kim cương");
-        System.out.println("5. Vip");
+        System.out.println("0. Thường");
+        System.out.println("1. Thân thiết");
+        System.out.println("2. VIP");
     }
     private String hienKieuThanhVien(int kieu){
         String kieuStr = null;
         switch (kieu){
             case 0:
-                kieuStr = "Khách";
+                kieuStr = "Thường";
                 break;
             case 1:
-                kieuStr = "Đồng";
+                kieuStr = "Thân thiết";
                 break;
             case 2:
-                kieuStr = "Bạc";
-                break;
-            case 3:
-                kieuStr = "Vàng";
-                break;
-            case 4:
-                kieuStr = "Kim cương";
-                break;
-            case 5:
-                kieuStr = "Vip";
+                kieuStr = "VIP";
                 break;
         }
         return kieuStr;
