@@ -153,6 +153,8 @@ public class main {
                     dv.hien();
                  break;
              case 6:
+                 HoaDon hd = new HoaDon();
+                 hd.nhap();
                  break;
          }
      }while (chon!=0);
@@ -201,5 +203,19 @@ public class main {
         System.out.println("1. Tìm theo mã");
         System.out.println("2. Tìm theo tên");
         System.out.println("3. Tìm theo quyền thành viên");
+    }
+    public static void menuDichvu(){
+        System.out.println("-----Dịch vụ------");
+        System.out.println("1. Nhập ");
+        System.out.println("2. Xem");
+        System.out.println("3. Ghi file");
+        System.out.println("4. Đọc file");
+    }
+    public static void menuPhong(){
+        System.out.println("-----Phòng-----");
+        System.out.println("1. Nhập ");
+        System.out.println("2. Xem");
+        System.out.println("3. Ghi file");
+        System.out.println("4. Đọc file");
     }
 }

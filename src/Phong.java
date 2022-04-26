@@ -1,5 +1,6 @@
 package src;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -90,7 +91,7 @@ public class Phong {
                 p.nhap();
                 dsP.add(p);
             }
-            System.out.printf("\nBạn có muốn tiếp tục nhập không??? Có(1), không(0)");
+            System.out.printf("\nBạn có muốn tiếp tục nhập không??? \n Có(1) , không(0)");
             int bien=new Scanner(System.in).nextInt();
             if(bien==0){
                 break;
@@ -101,5 +102,35 @@ public class Phong {
         hienLb();
         for(Phong phong: dsP)
             phong.hienDt();
+    }
+    public void hienMaP(){
+        System.out.println("----------");
+        System.out.print("--("+getMaP()+")--\n");
+        System.out.println("----------");
+    }
+    public void ghiFile(){
+        try {
+            FileOutputStream fos = new FileOutputStream("D:/dsPhong.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(dsP);
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    void docFile(){
+        try {
+            FileInputStream fis = new FileInputStream("D:/dsPhong.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            dsP = (ArrayList<Phong>) ois.readObject();
+            for (Phong p: dsP) {
+                p.hienDSphong();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

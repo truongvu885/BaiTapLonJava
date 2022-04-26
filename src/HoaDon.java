@@ -7,7 +7,7 @@ public class HoaDon {
     private long maHD;
     private long maNV;
     private long maKH;
-    private int maP;
+    private String maP;
     private int maDv;
     private String ngayThue;
     private String ngayTra;
@@ -19,6 +19,7 @@ public class HoaDon {
     ArrayList<Nguoi> dsng = DsNguoi.getDsNg();
     ArrayList<Phong> dsP = Phong.getDsP();
     ArrayList<DichVu> dsdv = DichVu.getDsdv();
+    ArrayList<HoaDon> dsHd = new ArrayList<>();
     public ArrayList<NhanVien> getDsnv(){
         ArrayList<NhanVien> dsnv = new ArrayList<>();
         for (Nguoi nguoi:dsng) {
@@ -49,9 +50,19 @@ public class HoaDon {
             kh.hienMaKh();
         }
     }
+    public void hienMaP(){
+        for (Phong p:dsP) {
+            p.hienMaP();
+        }
+    }
+    public void hienMaDv(){
+        for (DichVu dv:dsdv) {
+            dv.hienMaDv();
+        }
+    }
     public float getGiaPhong(){
         for (Phong p:dsP) {
-            if(p.getMaP()==this.maP)
+            if(p.getMaP().equalsIgnoreCase(this.maP))
             {
                 return p.getGiaP();
             }
@@ -86,7 +97,7 @@ public class HoaDon {
         return 0;
     }
 
-    public HoaDon(long maHD, long maNV, long maKH, int maP, int maDv, String ngayThue, String ngayTra,double tongTien) {
+    public HoaDon(long maHD, long maNV, long maKH, String maP, int maDv, String ngayThue, String ngayTra,double tongTien) {
         this.maHD = maHD;
         this.maNV = maNV;
         this.maKH = maKH;
@@ -130,11 +141,11 @@ public class HoaDon {
         this.maKH = maKH;
     }
 
-    public int getMaP() {
+    public String getMaP() {
         return maP;
     }
 
-    public void setMaP(int maP) {
+    public void setMaP(String maP) {
         this.maP = maP;
     }
 
@@ -172,11 +183,14 @@ public class HoaDon {
         hienMaKh();
         this.maKH = Long.parseLong(input.nextLine());
         System.out.println("Mã phòng: ");
+        hienMaP();
+        this.maP = input.nextLine();
         System.out.println("Dịch vụ: ");
+        hienMaDv();
+        this.maDv = Integer.parseInt(input.nextLine());
         System.out.println("Ngày thuê: ");
         this.ngayThue = input.nextLine();
         System.out.println("Ngày trả: ");
         this.ngayTra = input.nextLine();
     }
-
 }

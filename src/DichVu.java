@@ -72,6 +72,11 @@ public class DichVu {
            dichVu.hienDt();
        }
    }
+   public void hienMaDv(){
+       System.out.println("----------");
+       System.out.print("--("+getMaLoaiDV()+")--\n");
+       System.out.println("----------");
+   }
    public void ghiFile(){
        try {
            FileOutputStream fos = new FileOutputStream("D:/dsDvu.bin");
