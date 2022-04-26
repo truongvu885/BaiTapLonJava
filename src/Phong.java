@@ -86,7 +86,10 @@ public class Phong implements Serializable{
         int sl;
         while(true){
             System.out.printf("\nSố lượng phòng muốn nhập: ");
-            sl= new Scanner(System.in).nextInt();
+            sl = new Scanner(System.in).nextInt();
+            if(sl==0){
+                break;
+            }
             for (int i = 0; i < sl; i++) {
                 Phong p = new Phong();
                 p.nhap();
