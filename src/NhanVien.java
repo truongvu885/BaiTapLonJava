@@ -137,4 +137,9 @@ public class NhanVien extends Nguoi implements Serializable {
         this.hienLb();
         this.hienDt();
     }
+    public void hienMaNV(){
+        System.out.println("----------");
+        System.out.print("--("+getMa()+")--\n");
+        System.out.println("----------");
+    }
 }

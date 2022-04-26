@@ -146,9 +146,8 @@ public class main {
                  break;
              case 5:
                  DichVu dv = new DichVu();
-                 dv.nhap();
-                 dv.hienLb();
-                 dv.hienDt();
+                    dv.nhapDsDv();
+                    dv.hien();
                  break;
              case 6:
                  break;

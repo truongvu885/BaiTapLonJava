@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Phong {
@@ -9,6 +10,11 @@ public class Phong {
     private boolean trangThai;
 
     KiemTraType kt = new KiemTraType();
+     static ArrayList<Phong> dsP = new ArrayList<>();
+
+    public static ArrayList<Phong> getDsP() {
+        return dsP;
+    }
 
     public Phong() {
     }

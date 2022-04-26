@@ -1,5 +1,7 @@
 package src;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DichVu {
@@ -7,6 +9,11 @@ public class DichVu {
     private String tenDV;
     private float giaDV;
 
+    static ArrayList<DichVu> dsdv = new ArrayList<>();
+
+    public static ArrayList<DichVu> getDsdv() {
+        return dsdv;
+    }
     public void setMaLoaiDV(int maLoaiDV) {
         this.maLoaiDV = maLoaiDV;
     }
@@ -30,47 +37,64 @@ public class DichVu {
     public float getGiaDV() {
         return giaDV;
     }
-    public void setDichvu(){
-        switch (this.maLoaiDV){
-            case 1:
-                setGiaDV(4000);
-                setTenDV("Combo 5 ngày");
-                break;
-            case 2:
-                setGiaDV(5000);
-                setTenDV("Combo 7 ngày");
-                break;
-            case 3:
-                setGiaDV(9000);
-                setTenDV("Combo 15 ngày");
-                break;
-            case 4:
-                setGiaDV(15000);
-                setTenDV("Combo VIP");
-                break;
-        }
-    }
-    public void hienDichVu(){
-        System.out.println("\tBảng dịch vụ");
-        System.out.println("1. Combo5 - 4000");
-        System.out.println("2. Combo7 - 5000");
-        System.out.println("3. Combo15 - 9000");
-        System.out.println("4. VIP - 15000");
-    }
 
     public void nhap(){
         Scanner input = new Scanner(System.in);
-        hienDichVu();
-        System.out.print("Chọn dịch vụ: ");
+        System.out.print("Mã dịch vụ: ");
         this.maLoaiDV = Integer.parseInt(input.nextLine());
-        setDichvu();
+        System.out.print("Tên dịch vụ: ");
+        this.tenDV = input.nextLine();
+        System.out.print("Giá dịch vụ: ");
+        this.giaDV = Float.parseFloat(input.nextLine());
     }
     public void hienLb(){
-        System.out.printf("%5s|%15s|%10s","Mã dv","Tên dv","Giá"+"\n");
+        System.out.printf("%5s|%15s|%10s|","Mã dv","Tên dv","Giá"+"\n");
     }
     public void hienDt(){
-        System.out.printf("%5d",this.maLoaiDV);
-        System.out.printf("%15s",this.tenDV);
-        System.out.printf("%10.2f",this.giaDV);
+        System.out.printf("%5d|",this.maLoaiDV);
+        System.out.printf("%15s|",this.tenDV);
+        System.out.printf("%10.2f|",this.giaDV);
+        System.out.print("\n");
+    }
+    public void nhapDsDv(){
+        System.out.print("Nhập số lượng dịch vụ muốn thêm: ");
+        int soluong = new Scanner(System.in).nextInt();
+        for (int i = 0; i < soluong; i++) {
+            System.out.println("----------------");
+            DichVu dv = new DichVu();
+            dv.nhap();
+            dsdv.add(dv);
+        }
+    }
+   public void hien(){
+        hienLb();
+       for (DichVu dichVu:dsdv) {
+           dichVu.hienDt();
+       }
+   }
+   public void ghiFile(){
+       try {
+           FileOutputStream fos = new FileOutputStream("D:/dsDvu.bin");
+           ObjectOutputStream oos = new ObjectOutputStream(fos);
+           oos.writeObject(dsdv);
+           fos.close();
+           oos.close();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
+    void docFile(){
+        try {
+            FileInputStream fis = new FileInputStream("D:/dsDvu.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            dsdv = (ArrayList<DichVu>) ois.readObject();
+            for (DichVu dv: dsdv) {
+               dv.hien();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -120,4 +120,10 @@ public class KhachHang extends Nguoi {
         hienLb();
         hienDt();
     }
+
+    public void hienMaKh() {
+        System.out.println("----------");
+        System.out.print("--("+getMa()+")--\n");
+        System.out.println("----------");
+    }
 }

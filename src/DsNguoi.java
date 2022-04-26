@@ -27,10 +27,9 @@ public class DsNguoi {
     }
     public void hienMa(){
         for (Nguoi nguoi:dsNg) {
-            System.out.print("--("+nguoi.getMa()+")--\t");
+            System.out.print("--("+nguoi.getMa()+")--");
         }
     }
-
     public void nhap(String type) {
         switch (type){
             case "NhanVien":
@@ -182,7 +181,6 @@ public class DsNguoi {
              }
         }
     }
-
     public void xoa(){
         long maXoa;
         while (true)
@@ -215,7 +213,6 @@ public class DsNguoi {
                         break;
                     }
                 }
-
                 for (Nguoi nguoi:dsNg) {
                     if(nguoi.getMa()==maSua){
                         do {
@@ -251,7 +248,6 @@ public class DsNguoi {
                         break;
                     }
                 }
-
                 for (Nguoi nguoi:dsNg) {
                     if(nguoi.getMa()==maSua){
                         kh = (KhachHang) nguoi;
@@ -281,7 +277,6 @@ public class DsNguoi {
                 }
         }
     }
-
     public void sapXepTen(){
         Collections.sort(dsNg,NguoiSort.TEN);
         System.out.println("\n\tDanh sách sau khi sắp xếp");
@@ -300,7 +295,6 @@ public class DsNguoi {
             nguoi.hienDt();
         }
     }
-
     public void sapXepLuong(){
         ArrayList<NhanVien> dsnv = new ArrayList<>();
         for (Nguoi nguoi:dsNg) {
