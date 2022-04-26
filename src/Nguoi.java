@@ -106,9 +106,11 @@ public class Nguoi implements Serializable {
     }
 
     public void showMaNg() {
+        System.out.print("\tMã đã tồn tại: ");
         for (Nguoi nguoi : dsNg) {
             nguoi.hienMaNg();
         }
+        System.out.println();
     }
 
     public boolean kiemTraMaNg(long ma) {
@@ -184,6 +186,6 @@ public class Nguoi implements Serializable {
     }
 
     public void hienMaNg() {
-        System.out.print("--Mã :(" + getMa() + ")--");
+        System.out.print("(" + getMa() + ")\t");
     }
 }

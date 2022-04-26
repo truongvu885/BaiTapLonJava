@@ -1,6 +1,8 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class HoaDon {
@@ -355,5 +357,13 @@ public class HoaDon {
         for (HoaDon hd : dsHd) {
             hd.hienDt();
         }
+    }
+    public void SapXepTheoTongTien(){
+        Collections.sort(dsHd, new Comparator<HoaDon>() {
+            @Override
+            public int compare(HoaDon o1, HoaDon o2) {
+                return Double.compare(o1.getTongTien(),o2.getTongTien());
+            }
+        });
     }
 }

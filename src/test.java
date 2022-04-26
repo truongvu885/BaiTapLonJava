@@ -117,8 +117,8 @@ public class test {
                                 case 3 -> ds.xoa();
                                 case 4 -> ds.hien("NhanVien");
                                 case 5 -> ds.timKiemMa();
-                                case 6 ->//ds.sapXepLuong();
-                                            ds.sapXepTuoi("NhanVien");
+                                case 6 -> ds.sapXepLuong();
+                                        //ds.sapXepTuoi("NhanVien");
                                 case 7 -> ds.ghiFile();
                                 case 8 -> ds.docFile("NhanVien", null);
                             }
