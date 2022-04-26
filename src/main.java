@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main {
@@ -94,94 +95,106 @@ public class main {
                     dv.hien();
                  break;
              case 4:
-                 HoaDon hd = new HoaDon();
-                 hd.nhap();
+                 if(KiemTra()){
+                     HoaDon hd = new HoaDon();
+                     hd.nhapDsHoaDon();
+                     hd.hienDsHD();
+                 }
+                 else System.out.println("Bạn cần nhập Phòng quản lý, Phòng, Dịch vụ, Nhân viên, Khách hàng trước");
                  break;
              case 5:
-                 int chonnv;
-                 do {
-                     menuNhanvien();
-                     while (true){
-                         System.out.print("Bạn chọn: ");
-                         String chonnvS = new Scanner(System.in).nextLine();
-                         if(kt.isInt(chonnvS)){
-                             chonnv = Integer.parseInt(chonnvS);
-                             break;
+                 if (KiemTra())
+                 {
+                     int chonnv;
+                     do {
+                         menuNhanvien();
+                         while (true){
+                             System.out.print("Bạn chọn: ");
+                             String chonnvS = new Scanner(System.in).nextLine();
+                             if(kt.isInt(chonnvS)){
+                                 chonnv = Integer.parseInt(chonnvS);
+                                 break;
+                             }
                          }
-                     }
-                     switch (chonnv){
-                         case 1:
-                             ds.nhap("NhanVien");
-                             break;
-                         case 2:
-                             ds.sua("NhanVien");
-                             break;
-                         case 3:
-                             ds.xoa();
-                             break;
-                         case 4:
-                             ds.hien("NhanVien");
-                             break;
-                         case 5:
-                             ds.timKiemMa();
-                             break;
-                         case 6:
-                             ds.sapXepLuong();
-                             break;
-                         case 7:
-                             ds.ghiFile();
-                             break;
-                         case 8:
-                             ds.docFile("NhanVien",null);
-                             break;
-                     }
-                 }while (chonnv!=0);
+                         switch (chonnv){
+                             case 1:
+                                 ds.nhap("NhanVien");
+                                 break;
+                             case 2:
+                                 ds.sua("NhanVien");
+                                 break;
+                             case 3:
+                                 ds.xoa();
+                                 break;
+                             case 4:
+                                 ds.hien("NhanVien");
+                                 break;
+                             case 5:
+                                 ds.timKiemMa();
+                                 break;
+                             case 6:
+                                 ds.sapXepLuong();
+                                 break;
+                             case 7:
+                                 ds.ghiFile();
+                                 break;
+                             case 8:
+                                 ds.docFile("NhanVien",null);
+                                 break;
+                         }
+                     }while (chonnv!=0);
+                     break;
+                 }
+                 else System.out.println("Bạn cần nhập Phòng quản lý, Phòng, Dịch vụ trước");
                  break;
              case 6:
-                 int chonkh;
-                 do {
-                     menuKhachHang();
-                     while (true){
-                         System.out.print("Bạn chọn: ");
-                         String chonkhS = new Scanner(System.in).nextLine();
-                         if(kt.isInt(chonkhS)){
-                             chonkh = Integer.parseInt(chonkhS);
-                             break;
+                 if (KiemTra()){
+                     int chonkh;
+                     do {
+                         menuKhachHang();
+                         while (true){
+                             System.out.print("Bạn chọn: ");
+                             String chonkhS = new Scanner(System.in).nextLine();
+                             if(kt.isInt(chonkhS)){
+                                 chonkh = Integer.parseInt(chonkhS);
+                                 break;
+                             }
                          }
-                     }
-                     switch (chonkh){
-                         case 1:
-                             ds.nhap("KhachHang");
-                             break;
-                         case 2:
-                             ds.sua("KhachHang");
-                             break;
-                         case 3:
-                             ds.xoa();
-                             break;
-                         case 4:
-                             ds.hien("KhachHang");
-                             break;
-                         case 5:
-                             ds.timKiemMa();
-                             break;
-                         case 6:
-                             ds.sapXepTen();
-                             break;
-                         case 7:
-                             ds.ghiFile();
-                             break;
-                         case 8:
-                             ds.docFile(null,"KhachHang");
-                             break;
-                     }
-                 }while (chonkh!=0);
+                         switch (chonkh){
+                             case 1:
+                                 ds.nhap("KhachHang");
+                                 break;
+                             case 2:
+                                 ds.sua("KhachHang");
+                                 break;
+                             case 3:
+                                 ds.xoa();
+                                 break;
+                             case 4:
+                                 ds.hien("KhachHang");
+                                 break;
+                             case 5:
+                                 ds.timKiemMa();
+                                 break;
+                             case 6:
+                                 ds.sapXepTen();
+                                 break;
+                             case 7:
+                                 ds.ghiFile();
+                                 break;
+                             case 8:
+                                 ds.docFile(null,"KhachHang");
+                                 break;
+                         }
+                     }while (chonkh!=0);
+                     break;
+                 }
+                 else System.out.println("Bạn cần nhập Phòng quản lý, Phòng, Dịch vụ trước");
                  break;
          }
      }while (chon!=0);
     }
     public static void menuChinh(){
-
         System.out.println("\n\t-----QUẢN LÝ KHÁCH SẠN------");
         System.out.println("1. Phòng quản lý");
         System.out.println("2. Phòng");
@@ -237,5 +250,24 @@ public class main {
         System.out.println("2. Hiện ");
         System.out.println("3. Ghi file");
         System.out.println("4. Đọc file");
+    }
+    public static boolean KiemTra(){
+        ArrayList<Phong> dsP = Phong.getDsP();
+        ArrayList<PhongQuanLy> dsPQL = PhongQuanLy.getDsPQl();
+        ArrayList<DichVu> dsDv = DichVu.getDsdv();
+        int dem1=0,dem2=0,dem3=0;
+        for (Phong p:dsP) {
+            dem1++;
+        }
+        for (PhongQuanLy ql: dsPQL) {
+            dem2++;
+        }
+        for (DichVu dv: dsDv) {
+            dem3++;
+        }
+        if(dem1!=0&&dem2!=0&&dem3!=0){
+            return true;
+        }
+        else return false;
     }
 }
