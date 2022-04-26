@@ -43,7 +43,7 @@ public class KhachHang extends Nguoi {
     }
 
     public void KieuThanhVien(){
-        System.out.println("\t\t");
+        System.out.print("\t\t");
         System.out.println("0. Khách");
         System.out.println("1. Đồng");
         System.out.println("2. Bạc");
