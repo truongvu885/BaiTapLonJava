@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Phong {
+public class Phong implements Serializable{
     private String maP;
     private String loaiP;
     private float giaP;
@@ -59,14 +59,14 @@ public class Phong {
 
     public void nhap(){
         Scanner input = new Scanner(System.in);
-        System.out.print("\nMã phòng: ");
+        System.out.print("Mã phòng: ");
         this.maP = input.nextLine();
-        System.out.print("\nLoại phòng: ");
+        System.out.print("Loại phòng: ");
         this.loaiP = input.nextLine();
-        System.out.print("\nGiá phòng: ");
+        System.out.print("Giá phòng: ");
         this.giaP = input.nextFloat();
         input.nextLine();
-        System.out.print("\nTrạng thái: ");
+        System.out.print("Trạng thái: ");
         this.trangThai = input.nextLine();
 
     }
@@ -91,11 +91,6 @@ public class Phong {
                 p.nhap();
                 dsP.add(p);
             }
-            System.out.printf("\nBạn có muốn tiếp tục nhập không??? \n Có(1) , không(0)");
-            int bien=new Scanner(System.in).nextInt();
-            if(bien==0){
-                break;
-            }
         }
     }
     public void hienDSphong(){
@@ -119,18 +114,22 @@ public class Phong {
             e.printStackTrace();
         }
     }
-    void docFile(){
+    public void docFile(){
         try {
             FileInputStream fis = new FileInputStream("D:/dsPhong.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             dsP = (ArrayList<Phong>) ois.readObject();
+            hienLb();
             for (Phong p: dsP) {
-                p.hienDSphong();
+                p.hienDt();
             }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void suaP(){
+
     }
 }

@@ -143,9 +143,36 @@ public class main {
                  //ql.demSonv();
                  break;
              case 4:
-                 Phong p = new Phong();
-                 p.nhapDSphong();
-                 p.hienDSphong();
+                 int chonp;
+                 do {
+                     menuPhong();
+                     Phong p = new Phong();
+                     while (true){
+                         System.out.print("Bạn chọn: ");
+                         String chonPhS = new Scanner(System.in).nextLine();
+                         if(kt.isInt(chonPhS)){
+                             chonp = Integer.parseInt(chonPhS);
+                             break;
+                         }
+                     }
+                     switch (chonp){
+                         case 1:
+                             p.nhapDSphong();
+                             break;
+                         case 2:
+                             p.hienDSphong();
+                             break;
+                         case 3:
+                             p.ghiFile();
+                             break;
+                         case 4:
+                             p.docFile();
+                             break;
+                         case 5:
+                             p.suaP();
+                             break;
+                     }
+                 }while (chonp!=0);
                  break;
              case 5:
                  DichVu dv = new DichVu();
@@ -212,10 +239,11 @@ public class main {
         System.out.println("4. Đọc file");
     }
     public static void menuPhong(){
-        System.out.println("-----Phòng-----");
-        System.out.println("1. Nhập ");
-        System.out.println("2. Xem");
+        System.out.println("-----PHÒNG-----");
+        System.out.println("1. Nhập ds phòng ");
+        System.out.println("2. Hiện ds phòng");
         System.out.println("3. Ghi file");
         System.out.println("4. Đọc file");
+        System.out.println("5. Sửa phòng");
     }
 }
