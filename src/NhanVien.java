@@ -7,15 +7,17 @@ import java.util.Scanner;
 
 public class NhanVien extends Nguoi implements Serializable {
     private String ngayVaoLam;
-    private final float luongCB =1150;
+    private final float luongCB = 1150;
     private float phuCap;
     private float hsl;
     private String chucVu;
     private int maPB;
     private double luong;
+
     public NhanVien() {
 
     }
+
     ArrayList<PhongQuanLy> dsql = PhongQuanLy.getDsPQl();
 
 
@@ -73,54 +75,63 @@ public class NhanVien extends Nguoi implements Serializable {
     }
 
     public double getLuong() {
-        this.luong=this.luongCB*this.hsl + phuCap;
+        this.luong = this.luongCB * this.hsl + phuCap;
         return luong;
     }
-    public void showMapb(){
-        for (PhongQuanLy ql:dsql) {
+
+    public void showMapb() {
+        System.out.print("\tMã PB hiện có: ");
+        for (PhongQuanLy ql : dsql) {
             ql.hienMa();
         }
+        System.out.println();
     }
-    public boolean kiemTraMap(int map){
-        for (PhongQuanLy ql:dsql) {
-            if(ql.getMaPB()==map){
+
+    public boolean kiemTraMap(int map) {
+        for (PhongQuanLy ql : dsql) {
+            if (ql.getMaPB() == map) {
                 return true;
             }
         }
         return false;
     }
 
-    public void nhap(){
+    public void nhap() {
         super.nhap();
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();
-        System.out.print("Ngày vào làm: ");
-        this.ngayVaoLam = input.nextLine();
+        while (true){
+            System.out.print("Ngày vào làm: ");
+            this.ngayVaoLam = input.nextLine();
+            if(kt.isDate(this.ngayVaoLam)){
+                break;
+            }
+        }
         System.out.print("Chức vụ: ");
         this.chucVu = input.nextLine();
-        while(true){
+        while (true) {
             System.out.println("Phòng ban ");
             showMapb();
             String maPBS = input.nextLine();
-            if(kt.isLong(maPBS)){
+            if (kt.isLong(maPBS)) {
                 this.maPB = Integer.parseInt(maPBS);
-                if(kiemTraMap(this.maPB)){
+                if (kiemTraMap(this.maPB)) {
                     break;
                 }
             }
         }
-        while (true){
+        while (true) {
             System.out.print("Hệ số lương: ");
             String hslS = input.nextLine();
-            if(kt.isLong(hslS)){
+            if (kt.isLong(hslS)) {
                 this.hsl = Float.parseFloat(hslS);
                 break;
             }
         }
-        while (true){
+        while (true) {
             System.out.print("Phụ cấp: ");
             String pcS = input.nextLine();
-            if(kt.isLong(pcS)){
+            if (kt.isLong(pcS)) {
                 this.phuCap = Float.parseFloat(pcS);
                 break;
             }
@@ -129,29 +140,34 @@ public class NhanVien extends Nguoi implements Serializable {
         int i = PhongQuanLy.slnv() + 1;
         PhongQuanLy.setSoLuong(i);
     }
+
     @Override
-    public void hienLb(){
-        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|%10s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT",
-                "Ngày vào làm","Hệ số lương","Chức vụ","Phòng ban","Phụ cấp","Lương");
+    public void hienLb() {
+        System.out.println("\n\t------Danh sách nhân viên-----");
+        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|%10s|", "Mã", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số ĐT",
+                "Ngày vào làm", "Hệ số lương", "Chức vụ", "Phòng ban", "Phụ cấp", "Lương");
         System.out.print("\n");
     }
+
     @Override
-    public void hienDt(){
+    public void hienDt() {
         super.hienDt();
-        System.out.printf("%15s|",this.ngayVaoLam);
-        System.out.printf("%12.2f|",this.hsl);
-        System.out.printf("%10s|",this.chucVu);
-        System.out.printf("%10d|",this.maPB);
-        System.out.printf("%8.2f|",this.phuCap);
-        System.out.printf("%10.2f|",this.getLuong());
+        System.out.printf("%15s|", this.ngayVaoLam);
+        System.out.printf("%12.2f|", this.hsl);
+        System.out.printf("%10s|", this.chucVu);
+        System.out.printf("%10d|", this.maPB);
+        System.out.printf("%8.2f|", this.phuCap);
+        System.out.printf("%10.2f|", this.getLuong());
         System.out.print("\n");
     }
+
     @Override
-    public void hien(){
+    public void hien() {
         this.hienLb();
         this.hienDt();
     }
-    public void hienMaNV(){
-        System.out.print("--Mã NV:("+getMa()+")--");
+
+    public void hienMaNV() {
+        System.out.print("(" + getMa() + ")\t");
     }
 }

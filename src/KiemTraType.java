@@ -1,35 +1,47 @@
 package src;
 
-public class KiemTraType {
-    public  boolean isLong(String str) {
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.util.Date;
+
+public class KiemTraType implements Serializable {
+    public boolean isLong(String str) {
         try {
             Long.parseLong(str);
             return true;
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
-    public boolean isFloat(String s){
+
+    public boolean isFloat(String s) {
         try {
             Double.parseDouble(s);
             return true;
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
-    public boolean isInt(String s){
+
+    public boolean isInt(String s) {
         try {
             Integer.parseInt(s);
             return true;
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
-    public boolean isBoolean(String s){
+
+    public boolean isDate(String s) {
         try {
-            Boolean.parseBoolean(s);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = sdf.parse(s);
             return true;
-        } catch(NumberFormatException e){
+        } catch (DateTimeException e) {
+            return false;
+        } catch (ParseException e) {
             return false;
         }
     }

@@ -15,7 +15,8 @@ public class PhongQuanLy implements Serializable {
     public static ArrayList<PhongQuanLy> getDsPQl() {
         return dsPQl;
     }
-    public static int slnv(){
+
+    public static int slnv() {
         return soLuong;
     }
 
@@ -51,14 +52,14 @@ public class PhongQuanLy implements Serializable {
     public static void setSoLuong(int soLuong) {
         PhongQuanLy.soLuong = soLuong;
     }
-    public void nhap(){
+
+    public void nhap() {
         Scanner input = new Scanner(System.in);
 
-        while (true){
+        while (true) {
             System.out.print("Mã PB: ");
             String maPBS = input.nextLine();
-            if(kt.isInt(maPBS))
-            {
+            if (kt.isInt(maPBS)) {
                 this.maPB = Integer.parseInt(maPBS);
                 break;
             }
@@ -68,53 +69,61 @@ public class PhongQuanLy implements Serializable {
         int m = maPB;
         String t = tenPB;
     }
-    public void nhapDS(){
+
+    public void nhapDS() {
         int solp;
-        while (true){
+        while (true) {
             System.out.println("Nhập số lượng phòng quản lý: ");
             String slpS = new Scanner(System.in).nextLine();
 
-            if(kt.isInt(slpS)){
+            if (kt.isInt(slpS)) {
                 solp = Integer.parseInt(slpS);
                 break;
             }
         }
         for (int i = 0; i < solp; i++) {
-            System.out.println("Thông tin phòng thứ "+(i+1));
+            System.out.println("Thông tin phòng thứ " + (i + 1));
             PhongQuanLy pql = new PhongQuanLy();
             pql.nhap();
             dsPQl.add(pql);
         }
     }
-    public void hienLb(){
-        System.out.printf("%5s|%15s|%5s|","MãPB","Tên PB","SL");
+
+    public void hienLb() {
+        System.out.println("\n\t------Danh sách phòng ban-----");
+        System.out.printf("%5s|%15s|%5s|", "MãPB", "Tên PB", "SL");
         System.out.print("\n");
     }
-    public void hienDt(){
-        System.out.printf("%5d|",getMaPB());
-        System.out.printf("%15s|",getTenPB());
-        System.out.printf("%5d|",getSoLuong());
+
+    public void hienDt() {
+        System.out.printf("%5d|", getMaPB());
+        System.out.printf("%15s|", getTenPB());
+        System.out.printf("%5d|", getSoLuong());
         System.out.print("\n");
     }
-    public void hienDS(){
+
+    public void hienDS() {
         hienLb();
         for (PhongQuanLy ql : dsPQl) {
             ql.hienDt();
         }
     }
-    public void hienMa(){
-        System.out.println("Mã PB: "+this.maPB);
+
+    public void hienMa() {
+        System.out.print("(" + this.maPB + ")\t");
     }
-    public void demSonv(){
+
+    public void demSonv() {
         ArrayList<Nguoi> dsNg = DsNguoi.getDsNg();
-        int dem =0;
-        for (Nguoi nguoi:dsNg) {
-            if(nguoi.getType().equalsIgnoreCase("NhanVien")){
+        int dem = 0;
+        for (Nguoi nguoi : dsNg) {
+            if (nguoi.getType().equalsIgnoreCase("NhanVien")) {
                 dem++;
             }
         }
     }
-    public void ghiFile(){
+
+    public void ghiFile() {
         try {
             FileOutputStream fos = new FileOutputStream("D:/dsPhongQuanLy.bin");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -125,13 +134,14 @@ public class PhongQuanLy implements Serializable {
             e.printStackTrace();
         }
     }
-    public void docFile(){
+
+    public void docFile() {
         try {
             FileInputStream fis = new FileInputStream("D:/dsPhongQuanLy.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             dsPQl = (ArrayList<PhongQuanLy>) ois.readObject();
             hienLb();
-            for (PhongQuanLy pql: dsPQl) {
+            for (PhongQuanLy pql : dsPQl) {
                 pql.hienDt();
             }
         } catch (IOException e) {

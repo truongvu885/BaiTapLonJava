@@ -42,15 +42,15 @@ public class KhachHang extends Nguoi {
         this.ngayThueGan = ngayThueGan;
     }
 
-    public void KieuThanhVien(){
-        System.out.print("\t\t");
+    public void KieuThanhVien() {
         System.out.println("0. Thường");
         System.out.println("1. Thân thiết");
         System.out.println("2. VIP");
     }
-    private String hienKieuThanhVien(int kieu){
+
+    private String hienKieuThanhVien(int kieu) {
         String kieuStr = null;
-        switch (kieu){
+        switch (kieu) {
             case 0:
                 kieuStr = "Thường";
                 break;
@@ -63,53 +63,60 @@ public class KhachHang extends Nguoi {
         }
         return kieuStr;
     }
+
     @Override
     public void nhap() {
         super.nhap();
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();
-        while(true)
-        {
+        while (true) {
             System.out.print("Căn cước công dân: ");
             String cccdS = input.nextLine();
-            if(kt.isLong(cccdS)){
+            if (kt.isLong(cccdS)) {
                 this.cccd = Long.parseLong(cccdS);
                 break;
             }
         }
-        while(true)
-        {
+        while (true) {
             System.out.println("Thành viên: ");
             KieuThanhVien();
             String thVienS = input.nextLine();
-            if(kt.isInt(thVienS))
-            {
+            if (kt.isInt(thVienS)) {
                 this.thanhVien = Integer.parseInt(thVienS);
                 break;
             }
         }
 
-        System.out.println("Ngày thuê gần nhất: ");
-        this.ngayThueGan = input.nextLine();
+        while (true){
+            System.out.print("Ngày thuê gần nhất: ");
+            this.ngayThueGan = input.nextLine();
+            if(kt.isDate(this.ngayThueGan)){
+                break;
+            }
+        }
         super.setType("KhachHang");
     }
-    public void hienLb(){
-        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%10s|%15s|","Mã","Họ và tên","Ngày sinh","Giới tính","Địa chỉ","Số ĐT","CCCD","Thành viên","Ngày thuê gần");
+
+    public void hienLb() {
+        System.out.println("\n\t------Danh sách khách hàng-----");
+        System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%10s|%15s|", "Mã", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số ĐT", "CCCD", "Thành viên", "Ngày thuê gần");
         System.out.print("\n");
     }
-    public void hienDt(){
+
+    public void hienDt() {
         super.hienDt();
-        System.out.printf("%15d|",this.cccd);
-        System.out.printf("%10s|",hienKieuThanhVien(this.thanhVien));
-        System.out.printf("%15s|",this.ngayThueGan);
+        System.out.printf("%15d|", this.cccd);
+        System.out.printf("%10s|", hienKieuThanhVien(this.thanhVien));
+        System.out.printf("%15s|", this.ngayThueGan);
         System.out.print("\n");
     }
-    public void hien(){
+
+    public void hien() {
         hienLb();
         hienDt();
     }
 
     public void hienMaKh() {
-        System.out.print("--Mã KH:("+getMa()+")--");
+        System.out.print("(" + getMa() + ")\t");
     }
 }

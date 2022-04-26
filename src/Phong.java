@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Phong implements Serializable{
+public class Phong implements Serializable {
     private String maP;
     private String loaiP;
     private float giaP;
@@ -14,6 +14,7 @@ public class Phong implements Serializable{
     public static ArrayList<Phong> getDsP() {
         return dsP;
     }
+
     public String getMaP() {
         return maP;
     }
@@ -56,7 +57,7 @@ public class Phong implements Serializable{
         this.trangThai = trangThai;
     }
 
-    public void nhap(){
+    public void nhap() {
         Scanner input = new Scanner(System.in);
         System.out.print("Mã phòng: ");
         this.maP = input.nextLine();
@@ -68,23 +69,27 @@ public class Phong implements Serializable{
         System.out.print("Trạng thái: ");
         this.trangThai = input.nextLine();
     }
-    public void hienLb(){
-        System.out.printf("%5s|%15s|%15s|%10s|","Mã","Loại phòng","Giá phòng","Trạng thái");
+
+    public void hienLb() {
+        System.out.println("\n\t------Danh sách phòng-----");
+        System.out.printf("%5s|%15s|%15s|%10s|", "Mã", "Loại phòng", "Giá phòng", "Trạng thái");
         System.out.print("\n");
     }
-    public void hienDt(){
-        System.out.printf("%5s|",this.maP);
-        System.out.printf("%15s|",this.loaiP);
-        System.out.printf("%15.2f|",this.giaP);
-        System.out.printf("%10s|",this.trangThai);
+
+    public void hienDt() {
+        System.out.printf("%5s|", this.maP);
+        System.out.printf("%15s|", this.loaiP);
+        System.out.printf("%15.2f|", this.giaP);
+        System.out.printf("%10s|", this.trangThai);
         System.out.print("\n");
     }
-    public void nhapDSphong(){
+
+    public void nhapDSphong() {
         int sl;
-        while(true){
+        while (true) {
             System.out.printf("\nSố lượng phòng muốn nhập: ");
             sl = new Scanner(System.in).nextInt();
-            if(sl==0){
+            if (sl == 0) {
                 break;
             }
             for (int i = 0; i < sl; i++) {
@@ -94,15 +99,18 @@ public class Phong implements Serializable{
             }
         }
     }
-    public void hienDSphong(){
+
+    public void hienDSphong() {
         hienLb();
-        for(Phong phong: dsP)
+        for (Phong phong : dsP)
             phong.hienDt();
     }
-    public void hienMaP(){
-        System.out.print("--Mã P:("+getMaP()+")--");
+
+    public void hienMaP() {
+        System.out.print("(" + getMaP() + ")\t");
     }
-    public void ghiFile(){
+
+    public void ghiFile() {
         try {
             FileOutputStream fos = new FileOutputStream("D:/dsPhong.bin");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -113,13 +121,14 @@ public class Phong implements Serializable{
             e.printStackTrace();
         }
     }
-    public void docFile(){
+
+    public void docFile() {
         try {
             FileInputStream fis = new FileInputStream("D:/dsPhong.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             dsP = (ArrayList<Phong>) ois.readObject();
             hienLb();
-            for (Phong p: dsP) {
+            for (Phong p : dsP) {
                 p.hienDt();
             }
         } catch (IOException e) {
@@ -128,16 +137,20 @@ public class Phong implements Serializable{
             e.printStackTrace();
         }
     }
-    public void suaP(){
+
+    public void suaP() {
 
     }
-    public void xoaP(){
+
+    public void xoaP() {
 
     }
-    public void timkiemP(){
+
+    public void timkiemP() {
 
     }
-    public void sapxepP(){
+
+    public void sapxepP() {
 
     }
 }

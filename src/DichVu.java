@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DichVu {
+public class DichVu implements Serializable {
     private int maLoaiDV;
     private String tenDV;
     private float giaDV;
@@ -14,6 +14,7 @@ public class DichVu {
     public static ArrayList<DichVu> getDsdv() {
         return dsdv;
     }
+
     public void setMaLoaiDV(int maLoaiDV) {
         this.maLoaiDV = maLoaiDV;
     }
@@ -38,7 +39,7 @@ public class DichVu {
         return giaDV;
     }
 
-    public void nhap(){
+    public void nhap() {
         Scanner input = new Scanner(System.in);
         System.out.print("Mã dịch vụ: ");
         this.maLoaiDV = Integer.parseInt(input.nextLine());
@@ -47,17 +48,21 @@ public class DichVu {
         System.out.print("Giá dịch vụ: ");
         this.giaDV = Float.parseFloat(input.nextLine());
     }
-    public void hienLb(){
-        System.out.printf("%5s|%15s|%10s|","Mã dv","Tên dv","Giá");
+
+    public void hienLb() {
+        System.out.println("\n\t------Danh sách dịch vụ----");
+        System.out.printf("%5s|%15s|%10s|", "Mã dv", "Tên dv", "Giá");
         System.out.println();
     }
-    public void hienDt(){
-        System.out.printf("%5d|",this.maLoaiDV);
-        System.out.printf("%15s|",this.tenDV);
-        System.out.printf("%10.2f|",this.giaDV);
+
+    public void hienDt() {
+        System.out.printf("%5d|", this.maLoaiDV);
+        System.out.printf("%15s|", this.tenDV);
+        System.out.printf("%10.2f|", this.giaDV);
         System.out.print("\n");
     }
-    public void nhapDsDv(){
+
+    public void nhapDsDv() {
         System.out.print("Nhập số lượng dịch vụ muốn thêm: ");
         int soluong = new Scanner(System.in).nextInt();
         for (int i = 0; i < soluong; i++) {
@@ -67,33 +72,37 @@ public class DichVu {
             dsdv.add(dv);
         }
     }
-   public void hien(){
+
+    public void hienDsDv() {
         hienLb();
-       for (DichVu dichVu:dsdv) {
-           dichVu.hienDt();
-       }
-   }
-   public void hienMaDv(){
-       System.out.print("--Mã DV:("+getMaLoaiDV()+")--");
-   }
-   public void ghiFile(){
-       try {
-           FileOutputStream fos = new FileOutputStream("D:/dsDvu.bin");
-           ObjectOutputStream oos = new ObjectOutputStream(fos);
-           oos.writeObject(dsdv);
-           fos.close();
-           oos.close();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
-    void docFile(){
+        for (DichVu dichVu : dsdv) {
+            dichVu.hienDt();
+        }
+    }
+
+    public void hienMaDv() {
+        System.out.print("(" + getMaLoaiDV() + ")\t");
+    }
+
+    public void ghiFile() {
+        try {
+            FileOutputStream fos = new FileOutputStream("D:/dsDvu.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(dsdv);
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void docFile() {
         try {
             FileInputStream fis = new FileInputStream("D:/dsDvu.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
             dsdv = (ArrayList<DichVu>) ois.readObject();
-            for (DichVu dv: dsdv) {
-               dv.hien();
+            for (DichVu dv : dsdv) {
+                dv.hienDsDv();
             }
         } catch (IOException e) {
             e.printStackTrace();
