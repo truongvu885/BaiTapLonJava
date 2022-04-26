@@ -73,9 +73,7 @@ public class DichVu {
        }
    }
    public void hienMaDv(){
-       System.out.println("----------");
-       System.out.print("--("+getMaLoaiDV()+")--\n");
-       System.out.println("----------");
+       System.out.print("--Mã DV:("+getMaLoaiDV()+")--");
    }
    public void ghiFile(){
        try {

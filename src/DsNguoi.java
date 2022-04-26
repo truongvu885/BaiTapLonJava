@@ -16,20 +16,6 @@ public class DsNguoi {
         return dsNg;
     }
 
-    public boolean kiemTraMa(long makt){
-            for (Nguoi nguoi:dsNg) {
-                if(nguoi.getMa()==makt){
-                    return true;
-            }
-                else return false;
-        }
-            return false;
-    }
-    public void hienMa(){
-        for (Nguoi nguoi:dsNg) {
-            System.out.print("--("+nguoi.getMa()+")--");
-        }
-    }
     public void nhap(String type) {
         switch (type){
             case "NhanVien":
@@ -42,18 +28,10 @@ public class DsNguoi {
                     }
                 }
                 for (int i = 0; i < soluong; i++) {
-                    System.out.print("Không thêm mã đã tồn tại: ");
-                    hienMa();
-                    System.out.print("\n");
                     NhanVien nv = new NhanVien();
                     nv.nhap();
-                    if(!kiemTraMa(nv.getMa())){
-                        dsNg.add(nv);
-                    }
-                    else {
-                        System.err.println("Không thêm được-Mã nhân viên vừa nhập đã tồn tại");
-                        break;
-                    }
+                    dsNg.add(nv);
+
                 }
                 break;
             case "KhachHang":
@@ -66,17 +44,10 @@ public class DsNguoi {
                     }
                 }
                 for (int i = 0; i < soluong; i++) {
-                    System.out.print("Không thêm mã đã tồn tại");
-                    hienMa();
                     KhachHang kh = new KhachHang();
                     kh.nhap();
-                    if(!kiemTraMa(kh.getMa())){
-                        dsNg.add(kh);
-                    }
-                    else {
-                        System.err.println("Không thêm được-Mã vừa nhập đã tồn tại");
-                        break;
-                    }
+                    dsNg.add(kh);
+
                 }
                 break;
         }

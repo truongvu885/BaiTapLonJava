@@ -104,9 +104,7 @@ public class Phong {
             phong.hienDt();
     }
     public void hienMaP(){
-        System.out.println("----------");
-        System.out.print("--("+getMaP()+")--\n");
-        System.out.println("----------");
+        System.out.print("--Mã P:("+getMaP()+")--");
     }
     public void ghiFile(){
         try {

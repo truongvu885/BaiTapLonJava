@@ -1,5 +1,6 @@
 package src;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,7 +50,6 @@ public class PhongQuanLy {
     }
     public void nhap(){
         Scanner input = new Scanner(System.in);
-
         while (true){
             System.out.print("Mã PB: ");
             String maPBS = input.nextLine();
@@ -61,8 +61,6 @@ public class PhongQuanLy {
         }
         System.out.print("Tên PB: ");
         this.tenPB = input.nextLine();
-        int m = maPB;
-        String t = tenPB;
     }
     public void nhapDS(){
         int solp;
@@ -99,16 +97,33 @@ public class PhongQuanLy {
         }
     }
     public void hienMa(){
-        System.out.println("Mã PB: "+this.maPB);
+        System.out.print("--Mã PB:("+getMaPB()+")--");
     }
-    public void demSonv(){
-        ArrayList<Nguoi> dsNg = DsNguoi.getDsNg();
-        int dem =0;
-        for (Nguoi nguoi:dsNg) {
-            if(nguoi.getType().equalsIgnoreCase("NhanVien")){
-                dem++;
-            }
-        }
 
+    public void ghiFile(){
+        try {
+            FileOutputStream fos = new FileOutputStream("D:/dsPQL.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(dsPQl);
+            fos.close();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    void docFile(){
+        try {
+            FileInputStream fis = new FileInputStream("D:/dsPQL.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            dsPQl = (ArrayList<PhongQuanLy>) ois.readObject();
+            hienLb();
+            for (PhongQuanLy ql: dsPQl) {
+                ql.hienDt();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

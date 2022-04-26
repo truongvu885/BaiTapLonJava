@@ -122,8 +122,6 @@ public class KhachHang extends Nguoi {
     }
 
     public void hienMaKh() {
-        System.out.println("----------");
-        System.out.print("--("+getMa()+")--\n");
-        System.out.println("----------");
+        System.out.print("--Mã KH:("+getMa()+")--");
     }
 }

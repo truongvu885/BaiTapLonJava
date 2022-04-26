@@ -20,6 +20,7 @@ public class HoaDon {
     ArrayList<Phong> dsP = Phong.getDsP();
     ArrayList<DichVu> dsdv = DichVu.getDsdv();
     ArrayList<HoaDon> dsHd = new ArrayList<>();
+    KiemTraType kt = new KiemTraType();
     public ArrayList<NhanVien> getDsnv(){
         ArrayList<NhanVien> dsnv = new ArrayList<>();
         for (Nguoi nguoi:dsng) {
@@ -172,13 +173,30 @@ public class HoaDon {
     public void setNgayTra(String ngayTra) {
         this.ngayTra = ngayTra;
     }
+
+    public boolean KtraNV(long ma){
+        for (NhanVien nv: getDsnv()) {
+            if(nv.getMa()==ma){
+                return true;
+            }
+        }
+        return false;
+    }
     public void nhap(){
         Scanner input = new Scanner(System.in);
         System.out.println("Mã hóa đơn: ");
         this.maHD = Integer.parseInt(input.nextLine());
-        System.out.println("Mã nhân viên: ");
-        hienManv();
-        this.maNV = Long.parseLong(input.nextLine());
+        while(true){
+            System.out.println("Mã nhân viên: ");
+            hienManv();
+            String manvS = input.nextLine();
+            if(kt.isLong(manvS)){
+                this.maNV = Long.parseLong(manvS);
+                if(KtraNV(this.maNV)){
+                    break;
+                }
+            }
+        }
         System.out.println("Mã khách hàng: ");
         hienMaKh();
         this.maKH = Long.parseLong(input.nextLine());
@@ -192,5 +210,71 @@ public class HoaDon {
         this.ngayThue = input.nextLine();
         System.out.println("Ngày trả: ");
         this.ngayTra = input.nextLine();
+    }
+    public String hienTenNv(long maNvien){
+        for (NhanVien nv: getDsnv()) {
+            if(nv.getMa()==maNvien){
+                return nv.getTen();
+            }
+        }
+        return null;
+    }
+    public String hienTenKh(long maKhang){
+        for (KhachHang kh: getDsKh()) {
+            if(kh.getMa()==maKhang){
+                return kh.getTen();
+            }
+        }
+        return null;
+    }
+    public String hienLoaiP(String maPh){
+        for (Phong p: dsP) {
+            if(p.getMaP().equalsIgnoreCase(maPh)){
+                return p.getLoaiP();
+            }
+        }
+        return null;
+    }
+    public String hienTenDv(int maDvu){
+        for (DichVu dv: dsdv) {
+            if(dv.getMaLoaiDV()==maDvu){
+                return dv.getTenDV();
+            }
+        }
+        return null;
+    }
+
+    public void hienLb(){
+        System.out.printf("%5s|%20s|%20s|%15s|%15s|%10s|%10s|%10s|","Mã HD","Tên NV","Tên KH","Loại P","Dịch vụ","Ngày thuê","Ngày trả","Tổng tiền");
+        System.out.println();
+    }
+    public void hienDt(){
+        System.out.printf("%5d|",this.maHD);
+        System.out.printf("%20s|",hienTenNv(this.maNV));
+        System.out.printf("%20s|",hienTenKh(this.maKH));
+        System.out.printf("%15s|",hienLoaiP(this.maP));
+        System.out.printf("%15s|",hienTenDv(this.maDv));
+        System.out.printf("%10s|",this.ngayThue);
+        System.out.printf("%10s|",this.ngayTra);
+        System.out.printf("%10.2f|",tongTien);
+        System.out.println();
+    }
+    public void nhapDsHoaDon(){
+        while (true){
+            HoaDon hd = new HoaDon();
+            hd.nhap();
+            dsHd.add(hd);
+            System.out.println("Bạn có muốn tiếp tục không? \n Có-1 \t\t Không-0");
+            int chon = new Scanner(System.in).nextInt();
+            if(chon==0){
+                break;
+            }
+        }
+    }
+    public void hienDsHD(){
+        hienLb();
+        for (HoaDon hd:dsHd) {
+            hd.hienDt();
+        }
     }
 }

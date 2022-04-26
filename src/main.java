@@ -154,7 +154,8 @@ public class main {
                  break;
              case 6:
                  HoaDon hd = new HoaDon();
-                 hd.nhap();
+                 hd.nhapDsHoaDon();
+                 hd.hienDsHD();
                  break;
          }
      }while (chon!=0);
