@@ -37,10 +37,18 @@ public class test {
                             }
                         }
                         switch (chonpql) {
-                            case 1 -> pql.nhapDS();
-                            case 2 -> pql.hienDS();
-                            case 3 -> pql.ghiFile();
-                            case 4 -> pql.docFile();
+                            case 1:
+                                pql.nhapDS();
+                                break;
+                            case 2:
+                                pql.hienDS();
+                                break;
+                            case 3:
+                                pql.ghiFile();
+                                break;
+                            case 4:
+                                pql.docFile();
+                                break;
                         }
                     } while (chonpql != 0);
                     break;
@@ -57,14 +65,30 @@ public class test {
                             }
                         }
                         switch (chonp) {
-                            case 1 -> p.nhapDSphong();
-                            case 2 -> p.hienDSphong();
-                            case 3 -> p.ghiFile();
-                            case 4 -> p.docFile();
-                            case 5 -> p.suaP();
-                            case 6 -> p.xoaP();
-                            case 7 -> p.timkiemP();
-                            case 8 -> p.sapxepP();
+                            case 1:
+                                p.nhapDSphong();
+                                break;
+                            case 2:
+                                p.hienDSphong();
+                                break;
+                            case 3:
+                                p.ghiFile();
+                                break;
+                            case 4:
+                                p.docFile();
+                                break;
+                            case 5:
+                                p.suaP();
+                                break;
+                            case 6:
+                                p.xoaP();
+                                break;
+                            case 7:
+                                p.timkiemP();
+                                break;
+                            case 8:
+                                p.sapxepP();
+                                break;
                         }
                     } while (chonp != 0);
                     break;
@@ -90,8 +114,12 @@ public class test {
                             System.out.print("Chọn: ");
                             chonHd = new Scanner(System.in).nextInt();
                             switch (chonHd) {
-                                case 1 -> hd.nhapDsHoaDon();
-                                case 2 -> hd.hienDsHD();
+                                case 1:
+                                    hd.nhapDsHoaDon();
+                                    break;
+                                case 2:
+                                    hd.hienDsHD();
+                                    break;
                             }
                         } while (chonHd != 0);
                         break;
@@ -112,15 +140,33 @@ public class test {
                                 }
                             }
                             switch (chonnv) {
-                                case 1 -> ds.nhap("NhanVien");
-                                case 2 -> ds.sua("NhanVien");
-                                case 3 -> ds.xoa();
-                                case 4 -> ds.hien("NhanVien");
-                                case 5 -> ds.timKiemMa();
-                                case 6 -> ds.sapXepLuong();
-                                        //ds.sapXepTuoi("NhanVien");
-                                case 7 -> ds.ghiFile();
-                                case 8 -> ds.docFile("NhanVien", null);
+                                case 1:
+                                    ds.nhap("NhanVien");
+                                    break;
+                                case 2:
+                                    ds.sua("NhanVien");
+                                    break;
+                                case 3:
+                                    ds.xoa();
+                                    break;
+                                case 4:
+                                    ds.hien("NhanVien");
+                                    break;
+                                case 5:
+                                    ds.timKiemMa();
+                                    break;
+                                case 6:
+                                    //ds.sapXepLuong();
+                                    ds.sapXepTuoi("NhanVien");
+                                    break;
+                                case 7:
+                                    ds.ghiFile();
+                                    break;
+                                case 8:
+                                    NhanVien nv = new NhanVien();
+                                    nv.hienLb();
+                                    ds.docFile("NhanVien", null);
+                                    break;
                             }
                         } while (chonnv != 0);
                         break;
@@ -140,14 +186,32 @@ public class test {
                                 }
                             }
                             switch (chonkh) {
-                                case 1 -> ds.nhap("KhachHang");
-                                case 2 -> ds.sua("KhachHang");
-                                case 3 -> ds.xoa();
-                                case 4 -> ds.hien("KhachHang");
-                                case 5 -> ds.timKiemMa();
-                                case 6 -> ds.sapXepTen();
-                                case 7 -> ds.ghiFile();
-                                case 8 -> ds.docFile(null, "KhachHang");
+                                case 1:
+                                    ds.nhap("KhachHang");
+                                    break;
+                                case 2:
+                                    ds.sua("KhachHang");
+                                    break;
+                                case 3:
+                                    ds.xoa();
+                                    break;
+                                case 4:
+                                    ds.hien("KhachHang");
+                                    break;
+                                case 5:
+                                    ds.timKiemMa();
+                                    break;
+                                case 6:
+                                    ds.sapXepTen();
+                                    break;
+                                case 7:
+                                    ds.ghiFile();
+                                    break;
+                                case 8:
+                                    KhachHang kh = new KhachHang();
+                                    kh.hienLb();
+                                    ds.docFile(null, "KhachHang");
+                                    break;
                             }
                         } while (chonkh != 0);
                         break;
