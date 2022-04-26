@@ -19,92 +19,12 @@ public class main {
          }
          switch (chon){
              case 1:
-                 int chonnv;
-                 do {
-                     menuNhanvien();
-                     while (true){
-                         System.out.print("Bạn chọn: ");
-                         String chonnvS = new Scanner(System.in).nextLine();
-                         if(kt.isInt(chonnvS)){
-                             chonnv = Integer.parseInt(chonnvS);
-                             break;
-                         }
-                     }
-                     switch (chonnv){
-                         case 1:
-                             ds.nhap("NhanVien");
-                             break;
-                         case 2:
-                             ds.sua("NhanVien");
-                             break;
-                         case 3:
-                             ds.xoa();
-                             break;
-                         case 4:
-                             ds.hien("NhanVien");
-                             break;
-                         case 5:
-                             ds.timKiemMa();
-                             break;
-                         case 6:
-                             ds.sapXepLuong();
-                             break;
-                         case 7:
-                             ds.ghiFile();
-                             break;
-                         case 8:
-                             ds.docFile("NhanVien",null);
-                             break;
-                     }
-                 }while (chonnv!=0);
-                 break;
-             case 2:
-                 int chonkh;
-                 do {
-                     menuKhachHang();
-                     while (true){
-                         System.out.print("Bạn chọn: ");
-                         String chonkhS = new Scanner(System.in).nextLine();
-                         if(kt.isInt(chonkhS)){
-                             chonkh = Integer.parseInt(chonkhS);
-                             break;
-                         }
-                     }
-                     switch (chonkh){
-                         case 1:
-                             ds.nhap("KhachHang");
-                             break;
-                         case 2:
-                             ds.sua("KhachHang");
-                             break;
-                         case 3:
-                             ds.xoa();
-                             break;
-                         case 4:
-                             ds.hien("KhachHang");
-                             break;
-                         case 5:
-                             ds.timKiemMa();
-                             break;
-                         case 6:
-                             ds.sapXepTen();
-                             break;
-                         case 7:
-                             ds.ghiFile();
-                             break;
-                         case 8:
-                             ds.docFile(null,"KhachHang");
-                             break;
-                     }
-                 }while (chonkh!=0);
-                 break;
-             case 3:
                  PhongQuanLy ql = new PhongQuanLy();
                  ql.nhapDS();
                  ql.hien();
                  //ql.demSonv();
                  break;
-             case 4:
+             case 2:
                  int chonp;
                  do {
                      menuPhong();
@@ -145,14 +65,94 @@ public class main {
                      }
                  }while (chonp!=0);
                  break;
-             case 5:
+             case 3:
                  DichVu dv = new DichVu();
                     dv.nhapDsDv();
                     dv.hien();
                  break;
-             case 6:
+             case 4:
                  HoaDon hd = new HoaDon();
                  hd.nhap();
+                 break;
+             case 5:
+                 int chonnv;
+                 do {
+                     menuNhanvien();
+                     while (true){
+                         System.out.print("Bạn chọn: ");
+                         String chonnvS = new Scanner(System.in).nextLine();
+                         if(kt.isInt(chonnvS)){
+                             chonnv = Integer.parseInt(chonnvS);
+                             break;
+                         }
+                     }
+                     switch (chonnv){
+                         case 1:
+                             ds.nhap("NhanVien");
+                             break;
+                         case 2:
+                             ds.sua("NhanVien");
+                             break;
+                         case 3:
+                             ds.xoa();
+                             break;
+                         case 4:
+                             ds.hien("NhanVien");
+                             break;
+                         case 5:
+                             ds.timKiemMa();
+                             break;
+                         case 6:
+                             ds.sapXepLuong();
+                             break;
+                         case 7:
+                             ds.ghiFile();
+                             break;
+                         case 8:
+                             ds.docFile("NhanVien",null);
+                             break;
+                     }
+                 }while (chonnv!=0);
+                 break;
+             case 6:
+                 int chonkh;
+                 do {
+                     menuKhachHang();
+                     while (true){
+                         System.out.print("Bạn chọn: ");
+                         String chonkhS = new Scanner(System.in).nextLine();
+                         if(kt.isInt(chonkhS)){
+                             chonkh = Integer.parseInt(chonkhS);
+                             break;
+                         }
+                     }
+                     switch (chonkh){
+                         case 1:
+                             ds.nhap("KhachHang");
+                             break;
+                         case 2:
+                             ds.sua("KhachHang");
+                             break;
+                         case 3:
+                             ds.xoa();
+                             break;
+                         case 4:
+                             ds.hien("KhachHang");
+                             break;
+                         case 5:
+                             ds.timKiemMa();
+                             break;
+                         case 6:
+                             ds.sapXepTen();
+                             break;
+                         case 7:
+                             ds.ghiFile();
+                             break;
+                         case 8:
+                             ds.docFile(null,"KhachHang");
+                             break;
+                     }
+                 }while (chonkh!=0);
                  break;
          }
      }while (chon!=0);
@@ -160,12 +160,12 @@ public class main {
     public static void menuChinh(){
 
         System.out.println("\n\t-----QUẢN LÝ KHÁCH SẠN------");
-        System.out.println("1. Nhân viên");
-        System.out.println("2. Khách hàng");
-        System.out.println("3. Phòng quản lý");
-        System.out.println("4. Phòng");
-        System.out.println("5. Dịch vụ");
-        System.out.println("6. Hóa đơn");
+        System.out.println("1. Phòng quản lý");
+        System.out.println("2. Phòng");
+        System.out.println("3. Dịch vụ");
+        System.out.println("4. Hóa đơn");
+        System.out.println("5. Nhân viên");
+        System.out.println("6. Khách hàng");
     }
     private static void menuKhachHang() {
         System.out.println("\n\t-----KHÁCH HÀNG------");
