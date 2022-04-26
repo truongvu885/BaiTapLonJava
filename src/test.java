@@ -221,7 +221,11 @@ public class test {
                     pql.docFile();
                     p.docFile();
                     dv.docFile();
+                    NhanVien nv = new NhanVien();
+                    nv.hienLb();
                     ds.docFile("NhanVien",null);
+                    KhachHang kh = new KhachHang();
+                    kh.hienLb();
                     ds.docFile(null,"KhachHang");
                     break;
             }
