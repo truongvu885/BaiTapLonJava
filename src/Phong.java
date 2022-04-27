@@ -193,14 +193,22 @@ public class Phong implements Serializable {
                 p.hienDSphong();
             }
         }
+        for (int i = 0; i < dsP.size(); i++) {
+            if(dsP.get(i).getMaP().equalsIgnoreCase(ma)){
+                dsP.remove(dsP.get(i));
+                System.out.println("Xóa thành công");
+                hienDSphong();
+            }
+        }
     }
 
     public void timkiemP() {
         System.out.println("Mã cần tìm: ");
         String ma = new Scanner(System.in).nextLine();
+        hienLb();
         for (Phong p:dsP) {
             if(p.getMaP().equalsIgnoreCase(ma)){
-                p.hienDSphong();
+                p.hienDt();
             }
         }
     }
@@ -209,7 +217,7 @@ public class Phong implements Serializable {
         Collections.sort(dsP, new Comparator<Phong>() {
             @Override
             public int compare(Phong o1, Phong o2) {
-                return Float.compare(o1.getGiaP(),o2.getGiaP());
+                return Float.compare(o2.getGiaP(),o1.getGiaP());
             }
         });
         System.out.println("Danh sách sau khi sắp xếp");

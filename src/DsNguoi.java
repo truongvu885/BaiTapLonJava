@@ -162,10 +162,11 @@ public class DsNguoi {
                 break;
             }
         }
-        for (Nguoi nguoi : dsNg) {
-            if (nguoi.getMa() == maXoa) {
-                dsNg.remove(nguoi);
-                System.out.println("Xóa thành công");
+
+        for (int i = 0; i < dsNg.size(); i++) {
+            if(dsNg.get(i).getMa()==maXoa){
+                dsNg.remove(dsNg.get(i));
+                System.out.println("xóa thành công");
             }
         }
     }
