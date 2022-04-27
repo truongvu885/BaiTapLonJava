@@ -2,6 +2,8 @@ package src;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Phong implements Serializable {
@@ -139,18 +141,74 @@ public class Phong implements Serializable {
     }
 
     public void suaP() {
+        System.out.print("Mã phòng cần sửa: ");
+        String ma = new Scanner(System.in).nextLine();
+        for (Phong p:dsP) {
+            if(p.getMaP().equalsIgnoreCase(ma)){
+                int chonSua ;
+                do {
+                    menuSuaP();
+                    System.out.print("Chọn: ");
+                    chonSua = new Scanner(System.in).nextInt();
+                    switch (chonSua){
+                        case 1:
+                            System.out.println("Loại phòng mới: ");
+                            String lp = new Scanner(System.in).nextLine();
+                            p.setLoaiP(lp);
+                            break;
+                        case 2:
+                            System.out.println("Giá phòng mới: ");
+                            float gp = new Scanner(System.in).nextFloat();
+                            p.setGiaP(gp);
+                            break;
+                        case 3:
+                            System.out.println("Trạng thái mới: ");
+                            String tt = new Scanner(System.in).nextLine();
+                            p.setTrangThai(tt);
+                            break;
+                    }
+                }while (chonSua!=0);
+            }
+        }
+    }
 
+    public void menuSuaP(){
+        System.out.println("\t---Sửa tt phòng---");
+        System.out.println("0. Thoát");
+        System.out.println("1. Sửa loại phòng");
+        System.out.println("2. Sửa giá phòng");
+        System.out.println("3. Sửa trạng thái");
     }
 
     public void xoaP() {
-
+        System.out.print("Mã phòng cần xóa: ");
+        String ma = new Scanner(System.in).nextLine();
+        for (Phong p:dsP) {
+            if(p.getMaP().equalsIgnoreCase(ma)){
+                dsP.remove(p);
+                System.out.println("Xóa thành công");
+            }
+        }
     }
 
     public void timkiemP() {
-
+        System.out.println("Mã cần tìm: ");
+        String ma = new Scanner(System.in).nextLine();
+        for (Phong p:dsP) {
+            if(p.getMaP().equalsIgnoreCase(ma)){
+                p.hienDSphong();
+            }
+        }
     }
 
     public void sapxepP() {
-
+        Collections.sort(dsP, new Comparator<Phong>() {
+            @Override
+            public int compare(Phong o1, Phong o2) {
+                return Float.compare(o1.getGiaP(),o2.getGiaP());
+            }
+        });
+        System.out.println("Danh sách sau khi sắp xếp");
+        hienDSphong();
     }
 }

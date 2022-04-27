@@ -165,6 +165,7 @@ public class DsNguoi {
         for (Nguoi nguoi : dsNg) {
             if (nguoi.getMa() == maXoa) {
                 dsNg.remove(nguoi);
+                System.out.println("Xóa thành công");
             }
         }
     }
@@ -184,7 +185,6 @@ public class DsNguoi {
                 }
                 for (Nguoi nguoi : dsNg) {
                     if (nguoi.getMa() == maSua) {
-
                         do {
                             System.out.println("0. Thoát");
                             System.out.println("1. Sửa số điện thoại");

@@ -7,17 +7,13 @@ import java.util.Scanner;
 public class PhongQuanLy implements Serializable {
     private int maPB;
     private String tenPB;
-    private static int soLuong;
+    private  int soLuong;
 
     static ArrayList<PhongQuanLy> dsPQl = new ArrayList<>();
     KiemTraType kt = new KiemTraType();
 
     public static ArrayList<PhongQuanLy> getDsPQl() {
         return dsPQl;
-    }
-
-    public static int slnv() {
-        return soLuong;
     }
 
     public PhongQuanLy() {
@@ -29,7 +25,7 @@ public class PhongQuanLy implements Serializable {
         this.soLuong = soLuong;
     }
 
-    public int getMaPB() {
+    public  int getMaPB() {
         return maPB;
     }
 
@@ -49,8 +45,8 @@ public class PhongQuanLy implements Serializable {
         return soLuong;
     }
 
-    public static void setSoLuong(int soLuong) {
-        PhongQuanLy.soLuong = soLuong;
+    public  void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
     public void nhap() {
@@ -66,8 +62,7 @@ public class PhongQuanLy implements Serializable {
         }
         System.out.print("Tên PB: ");
         this.tenPB = input.nextLine();
-        int m = maPB;
-        String t = tenPB;
+        setSoLuong(demSonv());
     }
 
     public void nhapDS() {
@@ -96,6 +91,7 @@ public class PhongQuanLy implements Serializable {
     }
 
     public void hienDt() {
+        setSoLuong(demSonv());
         System.out.printf("%5d|", getMaPB());
         System.out.printf("%15s|", getTenPB());
         System.out.printf("%5d|", getSoLuong());
@@ -113,14 +109,18 @@ public class PhongQuanLy implements Serializable {
         System.out.print("(" + this.maPB + ")\t");
     }
 
-    public void demSonv() {
+    public int demSonv() {
         ArrayList<Nguoi> dsNg = DsNguoi.getDsNg();
         int dem = 0;
         for (Nguoi nguoi : dsNg) {
             if (nguoi.getType().equalsIgnoreCase("NhanVien")) {
-                dem++;
+                NhanVien nv = (NhanVien) nguoi;
+                if (nv.getMaPB()==this.maPB){
+                    dem++;
+                }
             }
         }
+        return dem;
     }
 
     public void ghiFile() {
