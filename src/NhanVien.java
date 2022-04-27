@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class NhanVien extends Nguoi implements Serializable {
+public class NhanVien extends Nguoi implements Serializable,IThaoTac {
     private String ngayVaoLam;
     private final float luongCB = 1150;
     private float phuCap;
@@ -96,6 +96,7 @@ public class NhanVien extends Nguoi implements Serializable {
         return false;
     }
 
+    @Override
     public void nhap() {
         super.nhap();
         Scanner input = new Scanner(System.in);
@@ -139,7 +140,6 @@ public class NhanVien extends Nguoi implements Serializable {
         super.setType("NhanVien");
     }
 
-    @Override
     public void hienLb() {
         System.out.println("\n\t------Danh sách nhân viên-----");
         System.out.printf("%5s|%20s|%15s|%10s|%20s|%12s|%15s|%12s|%10s|%10s|%8s|%10s|", "Mã", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số ĐT",
@@ -147,7 +147,6 @@ public class NhanVien extends Nguoi implements Serializable {
         System.out.print("\n");
     }
 
-    @Override
     public void hienDt() {
         super.hienDt();
         System.out.printf("%15s|", this.ngayVaoLam);

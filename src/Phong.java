@@ -6,11 +6,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class Phong implements Serializable {
+public class Phong implements Serializable,IThaoTac {
     private String maP;
     private String loaiP;
     private float giaP;
     private String trangThai;
+
     static ArrayList<Phong> dsP = new ArrayList<>();
 
     public static ArrayList<Phong> getDsP() {
@@ -186,13 +187,7 @@ public class Phong implements Serializable {
     public void xoaP() {
         System.out.print("Mã phòng cần xóa: ");
         String ma = new Scanner(System.in).nextLine();
-        for (Phong p:dsP) {
-            if(p.getMaP().equalsIgnoreCase(ma)){
-                dsP.remove(p);
-                System.out.println("Xóa thành công");
-                p.hienDSphong();
-            }
-        }
+
         for (int i = 0; i < dsP.size(); i++) {
             if(dsP.get(i).getMaP().equalsIgnoreCase(ma)){
                 dsP.remove(dsP.get(i));
@@ -222,5 +217,12 @@ public class Phong implements Serializable {
         });
         System.out.println("Danh sách sau khi sắp xếp");
         hienDSphong();
+
+//        Collections.sort(dsP, new Comparator<Phong>() {
+//            @Override
+//            public int compare(Phong o1, Phong o2) {
+//                return o2.getMaP().compareTo(o1.getMaP());
+//            }
+//        });
     }
 }

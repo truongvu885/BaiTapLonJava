@@ -1,7 +1,5 @@
 package src;
 
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Nguoi implements Serializable {
+public class Nguoi implements Serializable,IThaoTac {
     private long ma;
     private String ten;
     private String diaChi;
@@ -123,6 +121,7 @@ public class Nguoi implements Serializable {
         return false;
     }
 
+    @Override
     public void nhap() {
         Scanner input = new Scanner(System.in);
         KiemTraType kt = new KiemTraType();

@@ -1,8 +1,9 @@
 package src;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class KhachHang extends Nguoi {
+public class KhachHang extends Nguoi implements Serializable,IThaoTac {
     private long cccd;
     private int thanhVien;
     private String ngayThueGan;

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DichVu implements Serializable {
+public class DichVu implements Serializable,IThaoTac {
     private int maLoaiDV;
     private String tenDV;
     private float giaDV;

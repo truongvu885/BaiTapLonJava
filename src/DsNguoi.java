@@ -46,7 +46,6 @@ public class DsNguoi {
                     KhachHang kh = new KhachHang();
                     kh.nhap();
                     dsNg.add(kh);
-
                 }
                 break;
         }
@@ -326,7 +325,6 @@ public class DsNguoi {
         }
     }
 }
-
 class NguoiSort {
     public static final Comparator<Nguoi> TEN = (Nguoi o1, Nguoi o2) -> o1.getTen().compareTo(o2.getTen());
     public static final Comparator<NhanVien> LUONG = (NhanVien o1, NhanVien o2) -> Double.compare(o1.getLuong(), o2.getLuong());

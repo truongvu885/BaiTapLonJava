@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PhongQuanLy implements Serializable {
+public class PhongQuanLy implements Serializable,IThaoTac {
     private int maPB;
     private String tenPB;
     private  int soLuong;
@@ -17,6 +17,7 @@ public class PhongQuanLy implements Serializable {
     }
 
     public PhongQuanLy() {
+
     }
 
     public PhongQuanLy(int maPB, String tenPB, int soLuong) {
@@ -62,7 +63,6 @@ public class PhongQuanLy implements Serializable {
         }
         System.out.print("Tên PB: ");
         this.tenPB = input.nextLine();
-        setSoLuong(demSonv());
     }
 
     public void nhapDS() {
