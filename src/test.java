@@ -282,14 +282,14 @@ public class test {
     public static void menuPhong() {
         System.out.println("\n\t-----Phòng-----");
         System.out.println("0. Thoát");
-        System.out.println("1. Nhập ");
-        System.out.println("2. Hiện ");
+        System.out.println("1. Nhập danh sách");
+        System.out.println("2. Hiện danh sách ");
         System.out.println("3. Ghi file");
         System.out.println("4. Đọc file");
-        System.out.println("5. Sửa phòng ");
-        System.out.println("6. Xóa phòng ");
-        System.out.println("7. Tìm phòng ");
-        System.out.println("8. Sắp xếp phòng ");
+        System.out.println("5. Sửa phòng theo mã");
+        System.out.println("6. Xóa phòng theo mã ");
+        System.out.println("7. Tìm phòng theo mã ");
+        System.out.println("8. Sắp xếp phòng theo giá ");
     }
 
     public static void menuPhongQuanLy() {

@@ -145,7 +145,10 @@ public class Phong implements Serializable {
         String ma = new Scanner(System.in).nextLine();
         for (Phong p:dsP) {
             if(p.getMaP().equalsIgnoreCase(ma)){
-                int chonSua ;
+                System.out.println("Loại phòng mới: ");
+                String lp = new Scanner(System.in).nextLine();
+                p.setLoaiP(lp);
+                /*int chonSua ;
                 do {
                     menuSuaP();
                     System.out.print("Chọn: ");
@@ -167,18 +170,18 @@ public class Phong implements Serializable {
                             p.setTrangThai(tt);
                             break;
                     }
-                }while (chonSua!=0);
+                }while (chonSua!=0);*/
             }
         }
     }
 
-    public void menuSuaP(){
+    /*public void menuSuaP(){
         System.out.println("\t---Sửa tt phòng---");
         System.out.println("0. Thoát");
         System.out.println("1. Sửa loại phòng");
         System.out.println("2. Sửa giá phòng");
         System.out.println("3. Sửa trạng thái");
-    }
+    }*/
 
     public void xoaP() {
         System.out.print("Mã phòng cần xóa: ");
@@ -187,6 +190,7 @@ public class Phong implements Serializable {
             if(p.getMaP().equalsIgnoreCase(ma)){
                 dsP.remove(p);
                 System.out.println("Xóa thành công");
+                p.hienDSphong();
             }
         }
     }
